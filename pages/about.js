@@ -44,10 +44,9 @@ const SubheadStyled = styled.div`
   font-size: 2em;
   background-color: ${({ theme }) => theme.thirdColor};
   text-align: center;
-  justify-items: center;
-  /* > h2 {
+  > h2 {
     font-family: ExtraBold 800 Italic;
-  } */
+  }
 `;
 const InfoStyled = styled.div`
   background-color: ${({ theme }) => theme.primaryColor};

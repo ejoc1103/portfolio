@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Marvel from '../public/Marvel.png';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -39,7 +41,7 @@ const HeaderStyled = styled.div`
   font-size: 2.5em;
 `;
 
-const ProjectLeftStyled = styled.div`
+const ProjectLeftStyled = styled(motion.div)`
   display: grid;
   grid-template-columns: 2fr 3fr;
   border: 10px solid ${({ theme }) => theme.primaryColor};
@@ -48,7 +50,7 @@ const ProjectLeftStyled = styled.div`
   }
 `;
 
-const ProjectRightStyled = styled.div`
+const ProjectRightStyled = styled(motion.div)`
   display: grid;
   grid-template-columns: 3fr 2fr;
   border: 10px solid ${({ theme }) => theme.primaryColor};
@@ -56,16 +58,27 @@ const ProjectRightStyled = styled.div`
     background-color: ${({ theme }) => theme.secondaryColor};
   }
 `;
+const LastMainProjectStyled = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  border: 10px solid ${({ theme }) => theme.primaryColor};
+  > div {
+    background-color: ${({ theme }) => theme.secondaryColor};
+  }
+  margin-bottom: 2rem;
+`;
 const SchoolDescriptionStyled = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
   border: 12px solid ${({ theme }) => theme.textOne};
+  color: ${({ theme }) => theme.textOne};
 `;
 const ImageStyled = styled(Image)`
   border: 12px solid ${({ theme }) => theme.TextOne};
 `;
 export default function Education() {
+  const [selectedId, setSelectedId] = useState(null);
   return (
     <ContainerStyled>
       <HeaderStyled>
@@ -77,6 +90,15 @@ export default function Education() {
           target='_blank'
           rel='noreferrer'
         >
+          {/* <AnimatePresence>
+            {selectedId && (
+              <motion.div layoutId={selectedId}>
+                <motion.h5>{item.subtitle}</motion.h5>
+                <motion.h2>{item.title}</motion.h2>
+                <motion.button onClick={() => setSelectedId(null)} />
+              </motion.div>
+            )}
+          </AnimatePresence> */}
           <ProjectLeftStyled>
             <ImageStyled src={Marvel} alt='Marvel' />
             <SchoolDescriptionStyled>
@@ -116,13 +138,13 @@ export default function Education() {
           target='_blank'
           rel='noreferrer'
         >
-          <ProjectRightStyled>
+          <LastMainProjectStyled>
             <SchoolDescriptionStyled>
               <h1>Udacity</h1>
               <h2>Front End Web Developer Nanodegree</h2>
             </SchoolDescriptionStyled>
             <ImageStyled src={Wedding} alt='Wedding Site' />
-          </ProjectRightStyled>
+          </LastMainProjectStyled>
         </a>
       </MainProjectsStyled>
       {/* TODO add in other projects and put them here */}
