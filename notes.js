@@ -4,8 +4,7 @@
 //TODO Add social accounts links to social icons
 //TODO Add cool flashy features
 
-//TODO clean up each page need to do this from home with the double monitors
-//TODO form styling
+//TODO Responsive layout
 
 //TODO Outside of project but important
 //TODO Upload picture for profile

@@ -23,64 +23,75 @@ const Container = styled.div`
 const MainStyled = styled.div`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.secondaryColor};
-  color: ${({ theme }) => theme.primaryColor};
   font-weight: bold;
   grid-area: main;
   font-family: ExtraBold 800 Italic;
   justify-content: center;
   align-content: center;
   font-size: 3em;
+  > a {
+    color: ${({ theme }) => theme.textTwo};
+  }
 `;
 
 const Edu = styled.div`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
-  color: ${({ theme }) => theme.textOne};
+  color: ${({ theme }) => theme.textThree};
   grid-area: edu;
   justify-content: center;
   align-content: center;
   font-family: 'Merriweather', serif;
   font-size: 3em;
+  > a {
+    color: ${({ theme }) => theme.textThree};
+  }
 `;
 
 const Proj = styled.div`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
-  color: ${({ theme }) => theme.textOne};
+  color: ${({ theme }) => theme.textThree};
   grid-area: proj;
   justify-content: center;
   align-content: center;
   font-family: 'Merriweather', serif;
   font-size: 3em;
+  > a {
+    color: ${({ theme }) => theme.textThree};
+  }
 `;
 
 const About = styled.div`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
-  color: ${({ theme }) => theme.textOne};
+  color: ${({ theme }) => theme.textThree};
   grid-area: about;
   justify-content: center;
   align-content: center;
   font-family: 'Merriweather', serif;
   font-size: 3em;
+  > a {
+    color: ${({ theme }) => theme.textThree};
+  }
 `;
 
 const Con = styled.div`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
-  color: #035397;
+
   font-size: 3em;
   grid-area: con;
   justify-content: center;
   align-content: center;
   font-family: 'Merriweather', serif;
+  > a {
+    color: ${({ theme }) => theme.textThree};
+  }
 `;
 
 export default function Home() {
   const { id, setTheme } = useContext(ThemeContext);
-  console.log(process.env.NEXT_PUBLIC_YOUR_SERVICE_ID);
-  console.log(process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY);
-  console.log(process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID);
 
   return (
     <>
@@ -91,20 +102,30 @@ export default function Home() {
         </Head>
 
         <MainStyled>
-          <Link href='/'>{`Ed O'Connor`}</Link>
+          <Link href='/'>
+            <a>{`Ed O'Connor`}</a>
+          </Link>
           <Toggle isActive={id === 'fun'} onToggle={setTheme} />
         </MainStyled>
         <Edu>
-          <Link href='/education'>{`Education`}</Link>
+          <Link href='/education'>
+            <a>{`Education`}</a>
+          </Link>
         </Edu>
         <Proj>
-          <Link href='/projects'>{`Projects`}</Link>
+          <Link href='/projects'>
+            <a>{`Projects`}</a>
+          </Link>
         </Proj>
         <About>
-          <Link href='/about'>{`About`}</Link>
+          <Link href='/about'>
+            <a>{`About`}</a>
+          </Link>
         </About>
         <Con>
-          <Link href='/contact'>{`Contact`}</Link>
+          <Link href='/contact'>
+            <a>{`Contact`}</a>
+          </Link>
         </Con>
       </Container>
     </>

@@ -5,6 +5,7 @@ const theme = {
   thirdColor: '#CDBE78',
   textOne: '#F2F2F2',
   textTwo: '#000000',
+  textThree: '#FFFFFF',
 };
 
 export default theme;

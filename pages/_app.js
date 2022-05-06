@@ -9,9 +9,8 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 body{
-  min-height: 400px;
-  margin-bottom: 100px;
-  clear: both;
+  min-height: 100%;
+  overflow-x: hidden;
   background-color: ${({ theme }) => theme.secondaryColor}
 }
 a{

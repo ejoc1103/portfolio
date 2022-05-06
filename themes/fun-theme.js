@@ -1,10 +1,11 @@
 const theme = {
   id: 'fun',
-  primaryColor: '#E8630A',
-  secondaryColor: '#001E6C',
-  thirdColor: '#FCD900',
-  textOne: '#035397',
-  textTwo: '#FFFFFF',
+  primaryColor: '#112B3C',
+  secondaryColor: '#205375',
+  thirdColor: '#F66B0E',
+  textOne: '#EFEFEF',
+  textTwo: '#000000',
+  textThree: '#000000'
 };
 
 export default theme;

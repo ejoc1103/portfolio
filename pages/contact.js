@@ -9,18 +9,17 @@ import Instagram from '../public/InstagramIcon.png';
 import Github from '../public/github.png';
 //TODO add a loading situation for contact submission
 const ContainerStyled = styled.div`
-  position: relative;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   text-align: center;
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textTwo};
 `;
 const HeaderStyled = styled.div`
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 2rem;
   background-color: ${({ theme }) => theme.primaryColor};
   grid-column: span 2;
   font-size: 2.5em;
@@ -123,8 +122,12 @@ export default function Contact() {
           <LabelStyled>Email:</LabelStyled>
           <InputStyled type='email' name='from_email' />
           <LabelStyled>Phone Number:</LabelStyled>
-          <InputStyled type='phone number' name='from_phone' />
-          <LabelStyled>Message:</LabelStyled>
+          <InputStyled
+            type='tel'
+            name='from_phone'
+            pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+          />
+          <LabelStyled tyled>Message:</LabelStyled>
           <TextAreaStyled name='message' />
           <SubmitStyled type='submit' value='Send' />
         </FormStyled>

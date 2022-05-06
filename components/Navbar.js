@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled, { ThemeContext } from 'styled-components';
 import Toggle from '../components/Toggle';
-//TODO make links not look active after being clicked
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
