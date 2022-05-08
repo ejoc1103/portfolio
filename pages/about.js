@@ -43,11 +43,9 @@ const InfoContainerStyled = styled(motion.div)`
   grid-template-rows: 1fr 2fr;
 `;
 const SubheadStyled = styled.div`
-  display: grid;
   font-size: 2em;
   background-color: ${({ theme }) => theme.thirdColor};
-  justify-items: center;
-  align-items: center;
+  text-align: center;
   > h2 {
     font-family: ExtraBold 800 Italic;
   }
@@ -80,6 +78,27 @@ const FullStoryStyled = styled(motion.div)`
   grid-column: span 2;
   padding-bottom: 50px;
 `;
+const DivStyled = styled(motion.div)`
+  width: 80%;
+  padding: 5px;
+  border-radius: 25%;
+  justify-self: center;
+  align-self: center;
+  background-color: ${({ theme }) => theme.primaryColor};
+`;
+const ButtonStyled = styled(motion.button)`
+  display: grid;
+  background-color: ${({ theme }) => theme.secondaryColor};
+  width: 100px;
+  gap: 10px;
+  padding: 10px;
+`;
+const XStyled = styled(motion.h1)`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.secondaryColor};
+  color: ${({ theme }) => theme.primaryColor};
+`;
 const ParagraphsStyled = styled(motion.p)``;
 export default function About() {
   const [toggleStory, setToggleStory] = useState(false);
@@ -103,7 +122,6 @@ export default function About() {
       },
     },
   };
-  const tldrVar = {};
   const imageVar = {
     hidden: { opacity: 0 },
     show: {
@@ -128,7 +146,6 @@ export default function About() {
       x: 0,
       transition: {
         duration: 1,
-        delayChildren: 1,
       },
     },
   };
@@ -140,46 +157,58 @@ export default function About() {
       height: 'auto',
       transition: {
         duration: 1,
-        delayChildren: 0.5,
-        staggerChildren: 0.5,
+        delayChildren: 2,
+        staggerChildren: 2,
       },
     },
   };
   const pVar = {
-    hidden: { opacity: 0, x: -2000 },
+    hidden: { x: -2000 },
     show: {
-      opacity: 1,
       x: 0,
       transition: {
         duration: 0.5,
       },
     },
   };
+  console.log(toggleStory);
   return (
     <AnimatePresence>
-      <ContainerStyled variants={mainVar} initial='show' animate='show'>
-        <HeaderStyled>
-          <motion.h1 variants={headerVar} initial='hidden' animate='show'>
+      <ContainerStyled
+        key='c1'
+        variants={mainVar}
+        initial='show'
+        animate='show'
+      >
+        <HeaderStyled key='h1'>
+          <motion.h1
+            key='h2'
+            variants={headerVar}
+            initial='hidden'
+            animate='show'
+          >
             About Me
           </motion.h1>
         </HeaderStyled>
-        <TldrStyled>
+        <TldrStyled key='c2'>
           <PicContainerStyled
+            key='c3'
             variants={imageVar}
             initial='hidden'
             animate='show'
           >
-            <ProfileImageStyled src={Profile} alt='Profile' />
+            <ProfileImageStyled key='c4' src={Profile} alt='Profile' />
           </PicContainerStyled>
           <InfoContainerStyled
+            key='c5'
             variants={firstInfoVar}
             initial='hidden'
             animate='show'
           >
-            <SubheadStyled>
+            <SubheadStyled key='c5'>
               <h2>TLDR:</h2>
             </SubheadStyled>
-            <InfoStyled>
+            <InfoStyled key='c6'>
               <p>
                 Web Developer with hands-on experience in developing a variety
                 of websites by leveraging advanced skills in Frontend and
@@ -189,26 +218,40 @@ export default function About() {
           </InfoContainerStyled>
         </TldrStyled>
         <FullStoryStyled
+          key='c7'
           variants={fullStoryVar}
           initial='hidden'
           animate='show'
         >
-          <SubheadStyled>
+          <SubheadStyled key='c8'>
             <h2>Full Story:</h2>
+            <ButtonStyled
+              key='c9'
+              onClick={() => setToggleStory(prevState => !prevState)}
+            >
+              {toggleStory ? (
+                <XStyled>X</XStyled>
+              ) : (
+                <>
+                  <DivStyled></DivStyled>
+                  <DivStyled></DivStyled>
+                  <DivStyled></DivStyled>
+                </>
+              )}
+            </ButtonStyled>
           </SubheadStyled>
-          <button
-            style={{ 'z-index': '10' }}
-            onClick={() => setToggleStory(prevState => !prevState)}
-          >
-            Close Story
-          </button>
           <AnimatePresence>
             <InfoStyledTwo
+              key='c10'
               variants={fullInfoVar}
-              initial='hidden'
-              animate='show'
+              animate={toggleStory ? 'show' : 'hidden'}
             >
-              <ParagraphsStyled variants={pVar} initial='hidden' animate='show'>
+              <ParagraphsStyled
+                key='p1'
+                variants={pVar}
+                initial='hidden'
+                animate='show'
+              >
                 {`Hello Everyone! I'm Ed O’Connor, a meticulous and diligent
           professional with a proven track record of managing daily store
           operations while adhering to set company standards. Throughout my
@@ -217,7 +260,12 @@ export default function About() {
           operational effectiveness.`}
               </ParagraphsStyled>
 
-              <ParagraphsStyled variants={pVar} initial='hidden' animate='show'>
+              <ParagraphsStyled
+                key='p2'
+                variants={pVar}
+                initial='hidden'
+                animate='show'
+              >
                 {` 
           I have a remarkable background in managing,
           planning, and implementing tactical sales/marketing strategies to
@@ -228,7 +276,12 @@ export default function About() {
           `}
               </ParagraphsStyled>
 
-              <ParagraphsStyled variants={pVar} initial='hidden' animate='show'>
+              <ParagraphsStyled
+                key='p3'
+                variants={pVar}
+                initial='hidden'
+                animate='show'
+              >
                 {`
           My soft skills are second to none. Connect with
           me today or send me an email at ejoc1103@gmail.com if you want to

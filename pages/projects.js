@@ -71,9 +71,19 @@ export default function Education() {
     show: {
       opacity: 1,
       transition: {
-        duration: 2,
-        delayChildren: 0.2,
-        staggerChildren: 0.3,
+        duration: 1,
+        delayChildren: 1,
+        staggerChildren: 0.6,
+      },
+    },
+  };
+
+  const headerVar = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 1.5,
       },
     },
   };
@@ -97,7 +107,9 @@ export default function Education() {
   return (
     <ContainerStyled>
       <HeaderStyled>
-        <h1>Projects</h1>
+        <motion.h1 variants={headerVar} initial='hidden' animate='show'>
+          Projects
+        </motion.h1>
       </HeaderStyled>
       <AnimatePresence>
         <MainProjectsStyled

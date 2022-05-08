@@ -2,11 +2,13 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Twitter from '../public/twitterIcon.png';
 import LinkedIn from '../public/LinkedIn.png';
 import Instagram from '../public/InstagramIcon.png';
 import Github from '../public/github.png';
+import Send from '../public/sendMail.png';
 //TODO add a loading situation for contact submission
 const ContainerStyled = styled.div`
   display: grid;
@@ -48,7 +50,6 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-content: center;
 `;
-
 const MainContentStyled = styled.div`
   justify-self: center;
   display: grid;
@@ -57,6 +58,17 @@ const MainContentStyled = styled.div`
   grid-column: span 2;
   border: 10px solid ${({ theme }) => theme.primaryColor};
   margin: 2rem;
+`;
+
+const SendStyled = styled(Image)`
+  transform: rotate(45deg);
+  transform-origin: bottom;
+`;
+const SendIconStyled = styled(motion.div)`
+  display: grid;
+  width: 100%;
+  overflow: visible;
+  grid-column: span 2;
 `;
 
 const LabelStyled = styled.label`
@@ -100,8 +112,8 @@ export default function Contact() {
       .then(
         result => {
           console.log(result.text);
-          document.getElementById('contact-form').reset();
           setLoading(false);
+          document.getElementById('contact-form').reset();
         },
         error => {
           console.log(error.text);
@@ -115,38 +127,44 @@ export default function Contact() {
         {loading === true ? <h1>Sending Email</h1> : <h1>Contact Me</h1>}
       </HeaderStyled>
       <SpacerStyled />
-      <MainContentStyled>
-        <FormStyled ref={form} onSubmit={sendEmail} id='contact-form'>
-          <LabelStyled>Name:</LabelStyled>
-          <InputStyled type='text' name='from_name' />
-          <LabelStyled>Email:</LabelStyled>
-          <InputStyled type='email' name='from_email' />
-          <LabelStyled>Phone Number:</LabelStyled>
-          <InputStyled
-            type='tel'
-            name='from_phone'
-            pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-          />
-          <LabelStyled tyled>Message:</LabelStyled>
-          <TextAreaStyled name='message' />
-          <SubmitStyled type='submit' value='Send' />
-        </FormStyled>
 
-        <ContactPicksStyled>
-          <ImageContainer>
-            <ImageStyled src={Twitter} alt='Twitter' />
-          </ImageContainer>
-          <ImageContainer>
-            <ImageStyled src={Github} alt='Github' />
-          </ImageContainer>
-          <ImageContainer>
-            <ImageStyled src={Instagram} alt='Instagram' />
-          </ImageContainer>
-          <ImageContainer>
-            <ImageStyled src={LinkedIn} alt='LinkedIn' />
-          </ImageContainer>
-        </ContactPicksStyled>
-      </MainContentStyled>
+      {loading === true ? (
+        <MainContentStyled>
+          <FormStyled ref={form} onSubmit={sendEmail} id='contact-form'>
+            <LabelStyled>Name:</LabelStyled>
+            <InputStyled type='text' name='from_name' />
+            <LabelStyled>Email:</LabelStyled>
+            <InputStyled type='email' name='from_email' />
+            <LabelStyled>Phone Number:</LabelStyled>
+            <InputStyled
+              type='tel'
+              name='from_phone'
+              pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+            />
+            <LabelStyled tyled>Message:</LabelStyled>
+            <TextAreaStyled name='message' />
+            <SubmitStyled type='submit' value='Send' />
+          </FormStyled>
+          <ContactPicksStyled>
+            <ImageContainer>
+              <ImageStyled src={Twitter} alt='Twitter' />
+            </ImageContainer>
+            <ImageContainer>
+              <ImageStyled src={Github} alt='Github' />
+            </ImageContainer>
+            <ImageContainer>
+              <ImageStyled src={Instagram} alt='Instagram' />
+            </ImageContainer>
+            <ImageContainer>
+              <ImageStyled src={LinkedIn} alt='LinkedIn' />
+            </ImageContainer>
+          </ContactPicksStyled>
+        </MainContentStyled>
+      ) : (
+        <SendIconStyled>
+          <SendStyled src={Send} alt='Send' />
+        </SendIconStyled>
+      )}
 
       <Navbar />
     </ContainerStyled>
