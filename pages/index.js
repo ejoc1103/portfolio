@@ -35,6 +35,7 @@ const MainStyled = styled(motion.div)`
 `;
 
 const Edu = styled(motion.div)`
+  cursor: pointer;
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
   color: ${({ theme }) => theme.textThree};
@@ -50,6 +51,7 @@ const Edu = styled(motion.div)`
 `;
 
 const Proj = styled(motion.div)`
+  cursor: pointer;
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
@@ -65,6 +67,7 @@ const Proj = styled(motion.div)`
 `;
 
 const About = styled(motion.div)`
+  cursor: pointer;
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
@@ -80,6 +83,7 @@ const About = styled(motion.div)`
 `;
 
 const Con = styled(motion.div)`
+  cursor: pointer;
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
   font-size: 3em;
