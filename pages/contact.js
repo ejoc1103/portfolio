@@ -1,14 +1,15 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Twitter from '../public/twitterIcon.png';
 import LinkedIn from '../public/LinkedIn.png';
 import Instagram from '../public/InstagramIcon.png';
 import Github from '../public/github.png';
-import Send from '../public/sendMail.png';
+import { FaPaperPlane } from 'react-icons/fa';
+
 //TODO add a loading situation for contact submission
 const ContainerStyled = styled.div`
   display: grid;
@@ -16,8 +17,9 @@ const ContainerStyled = styled.div`
   text-align: center;
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textTwo};
+  padding-bottom: 90px;
 `;
-const HeaderStyled = styled.div`
+const HeaderStyled = styled(motion.div)`
   display: grid;
   justify-content: center;
   align-content: center;
@@ -27,17 +29,18 @@ const HeaderStyled = styled.div`
   font-size: 2.5em;
   color: ${({ theme }) => theme.textOne};
 `;
-const FormStyled = styled.form`
+const FormStyled = styled(motion.form)`
   display: grid;
   padding: 10px;
   grid-template-columns: 1fr;
   border: 10px solid ${({ theme }) => theme.primaryColor};
 `;
-const ContactPicksStyled = styled.div`
+const ContactPicksStyled = styled(motion.div)`
   display: grid;
   padding: 10px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-content: space-around;
   background-color: ${({ theme }) => theme.textOne};
   border: 10px solid ${({ theme }) => theme.primaryColor};
 `;
@@ -60,15 +63,23 @@ const MainContentStyled = styled.div`
   margin: 2rem;
 `;
 
-const SendStyled = styled(Image)`
-  transform: rotate(45deg);
-  transform-origin: bottom;
-`;
-const SendIconStyled = styled(motion.div)`
+const SendStyled = styled(motion.div)`
+  justify-self: center;
   display: grid;
-  width: 100%;
-  overflow: visible;
+  width: 80%;
   grid-column: span 2;
+  overflow: visible;
+  border: 10px solid ${({ theme }) => theme.primaryColor};
+  margin: 2rem;
+  justify-content: center;
+  align-content: center;
+`;
+
+const SendIconStyled = styled(motion.div)`
+  margin: 2rem;
+  transform: rotate(45deg);
+  justify-content: center;
+  align-content: center;
 `;
 
 const LabelStyled = styled.label`
@@ -99,6 +110,51 @@ export default function Contact() {
   const form = useRef();
   const [loading, setLoading] = useState(false);
 
+  const sendVar = {
+    start: {
+      x: 0,
+      rotate: 45,
+    },
+    send: {
+      rotate: 45,
+      x: 2000,
+      transition: {
+        delay: 0.1,
+        duration: 1,
+      },
+    },
+  };
+
+  const headerVar = {
+    start: {
+      x: -2000,
+    },
+    show: {
+      x: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
+  const socialVar = {
+    start: {
+      x: 2000,
+    },
+    show: {
+      x: 0,
+      transition: {
+        duration: 1,
+        delay: 0.5,
+      },
+    },
+  };
+
+  const formVar = {
+    start: { opacity: 0 },
+    show: { opacity: 1, transition: { delay: 1, duration: 1 } },
+  };
+
   const sendEmail = e => {
     e.preventDefault();
     setLoading(true);
@@ -113,7 +169,6 @@ export default function Contact() {
         result => {
           console.log(result.text);
           setLoading(false);
-          document.getElementById('contact-form').reset();
         },
         error => {
           console.log(error.text);
@@ -123,14 +178,21 @@ export default function Contact() {
 
   return (
     <ContainerStyled>
-      <HeaderStyled>
+      <HeaderStyled variants={headerVar} initial='start' animate='show'>
         {loading === true ? <h1>Sending Email</h1> : <h1>Contact Me</h1>}
       </HeaderStyled>
       <SpacerStyled />
 
-      {loading === true ? (
+      {loading === false ? (
         <MainContentStyled>
-          <FormStyled ref={form} onSubmit={sendEmail} id='contact-form'>
+          <FormStyled
+            variants={formVar}
+            initial='start'
+            animate='show'
+            ref={form}
+            onSubmit={sendEmail}
+            id='contact-form'
+          >
             <LabelStyled>Name:</LabelStyled>
             <InputStyled type='text' name='from_name' />
             <LabelStyled>Email:</LabelStyled>
@@ -145,27 +207,39 @@ export default function Contact() {
             <TextAreaStyled name='message' />
             <SubmitStyled type='submit' value='Send' />
           </FormStyled>
-          <ContactPicksStyled>
+          <ContactPicksStyled
+            variants={socialVar}
+            initial='start'
+            animate='show'
+          >
             <ImageContainer>
-              <ImageStyled src={Twitter} alt='Twitter' />
+              <a
+                href='https://github.com/ejoc1103'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <ImageStyled src={Github} alt='Github' />
+              </a>
             </ImageContainer>
             <ImageContainer>
-              <ImageStyled src={Github} alt='Github' />
-            </ImageContainer>
-            <ImageContainer>
-              <ImageStyled src={Instagram} alt='Instagram' />
-            </ImageContainer>
-            <ImageContainer>
-              <ImageStyled src={LinkedIn} alt='LinkedIn' />
+              <a
+                href='https://www.linkedin.com/in/ed-oconnor1103'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <ImageStyled src={LinkedIn} alt='LinkedIn' />
+              </a>
             </ImageContainer>
           </ContactPicksStyled>
         </MainContentStyled>
       ) : (
-        <SendIconStyled>
-          <SendStyled src={Send} alt='Send' />
-        </SendIconStyled>
+        <SendStyled onChange={() => handleChange()}>
+          <SendIconStyled variants={sendVar} initial='start' animate='send'>
+            <FaPaperPlane size={200} />
+          </SendIconStyled>
+        </SendStyled>
       )}
-
+      <SpacerStyled />
       <Navbar />
     </ContainerStyled>
   );
