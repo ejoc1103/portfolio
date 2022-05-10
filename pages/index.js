@@ -19,6 +19,7 @@ const Container = styled.div`
     'about main proj'
     'about con con';
   @media (max-width: 1050px) {
+    position: relative;
     grid-template-areas:
       'edu proj'
       'main main'
