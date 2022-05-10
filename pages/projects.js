@@ -202,11 +202,7 @@ export default function Education() {
                 </h2>
               </ProjectDescriptionStyled>
               <ImageDivStyled>
-                <ImageStyled
-                  src={Wedding}
-                  alt='Wedding Site'
-                  layout='responsive'
-                />
+                <ImageStyled src={Wedding} alt='Wedding Site' />
               </ImageDivStyled>
             </ARightStyled>
           </ProjectBlockStyled>
