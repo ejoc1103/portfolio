@@ -14,6 +14,7 @@ const ContainerStyled = styled(motion.div)`
   justify-items: center;
   align-content: center;
   justify-content: center;
+  justify-self: center;
   background-color: ${({ theme }) => theme.secondaryColor};
   padding-bottom: 50px;
 `;
