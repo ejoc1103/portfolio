@@ -25,21 +25,28 @@ const HeaderStyled = styled.div`
   width: 100%;
   padding: 2rem;
 `;
-const PicContainerStyled = styled(motion.div)`
-  float: left;
-  background-color: ${({ theme }) => theme.primaryColor};
-`;
-const ProfileImageStyled = styled(Image)``;
 const InfoContainerStyled = styled(motion.div)`
   display: grid;
-  width: 75%;
   grid-template-columns: 1fr 2fr;
+  width: 90%;
 `;
+const PicContainerStyled = styled(motion.div)`
+  background-color: ${({ theme }) => theme.primaryColor};
+  @media (max-width: 500px) {
+    grid-column: span 2;
+    padding: 40px;
+    border: 2px solid ${({ theme }) => theme.thirdColor};
+  }
+`;
+const ProfileImageStyled = styled(Image)``;
 const SubheadStyled = styled.div`
   display: grid;
   align-items: center;
   font-size: 3em;
   background-color: ${({ theme }) => theme.thirdColor};
+  @media (max-width: 500px) {
+    grid-column: span 2;
+  }
 `;
 const InfoStyled = styled.div`
   display: grid;
@@ -63,7 +70,7 @@ const InfoStyledTwo = styled(motion.div)`
 `;
 const FullStoryStyled = styled(motion.div)`
   display: grid;
-  width: 75%;
+  width: 90%;
   grid-template-columns: 1fr;
   padding-bottom: 50px;
 `;
