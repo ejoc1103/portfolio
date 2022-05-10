@@ -14,6 +14,9 @@ const Container = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.primaryColor};
   padding: 10px;
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const NavSection = styled.div`

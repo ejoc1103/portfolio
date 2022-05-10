@@ -40,34 +40,43 @@ const HeaderStyled = styled.div`
 
 const SchoolOneStyled = styled(motion.div)`
   display: grid;
-  height: 250px;
+  background-color: ${({ theme }) => theme.primaryColor};
+  min-height: 250px;
   width: 75%;
-  grid-template-columns: 2fr 3fr;
+  grid-template-areas: 'pic pic desc desc desc';
   border: 10px solid ${({ theme }) => theme.primaryColor};
   justify-self: center;
   > div {
     background-color: ${({ theme }) => theme.secondaryColor};
+  }
+  @media (max-width: 1250px) {
+    grid-template-areas: 'pic' 'desc';
   }
 `;
 
 const SchoolTwoStyled = styled(motion.div)`
   display: grid;
-  height: 250px;
+  min-height: 250px;
   width: 75%;
   justify-self: center;
-  grid-template-columns: 3fr 2fr;
+  grid-template-areas: 'desc desc desc pic pic';
   border: 10px solid ${({ theme }) => theme.primaryColor};
   > div {
     background-color: ${({ theme }) => theme.secondaryColor};
   }
+  @media (max-width: 1250px) {
+    grid-template-areas: 'pic' 'desc';
+  }
 `;
 const SchoolDescriptionStyled = styled.div`
   display: grid;
+  grid-area: desc;
   justify-items: center;
   align-items: center;
   border: 12px solid ${({ theme }) => theme.textOne};
 `;
 const ImageStyled = styled(Image)`
+  grid-area: pic;
   border: 12px solid ${({ theme }) => theme.TextOne};
 `;
 export default function Education() {

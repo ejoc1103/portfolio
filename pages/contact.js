@@ -197,7 +197,7 @@ export default function Contact() {
             <InputStyled type='text' name='from_name' />
             <LabelStyled>Email:</LabelStyled>
             <InputStyled type='email' name='from_email' />
-            <LabelStyled>Phone Number:</LabelStyled>
+            <LabelStyled>Phone Number: xxx-xxx-xxxx</LabelStyled>
             <InputStyled
               type='tel'
               name='from_phone'

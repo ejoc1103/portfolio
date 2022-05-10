@@ -44,26 +44,43 @@ const ProjectBlockStyled = styled(motion.div)`
   > div {
     background-color: ${({ theme }) => theme.secondaryColor};
   }
-  height: auto;
 `;
 const ProjectDescriptionStyled = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
+  grid-area: desc;
   border: 12px solid ${({ theme }) => theme.textOne};
   color: ${({ theme }) => theme.textOne};
 `;
+
+const ImageDivStyled = styled.div`
+  display: grid;
+  grid-area: img;
+  height: 100%;
+  width: 100%;
+`;
+const ImageStyled = styled(Image)`
+  height: 100%;
+  width: 100%;
+`;
 const ALeftStyled = styled.a`
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  width: 100%;
+  grid-template-areas: 'img img img desc desc desc';
   height: 100%;
+  width: 100%;
+  @media (max-width: 980px) {
+    grid-template-areas: 'img' 'desc';
+  }
 `;
 const ARightStyled = styled.a`
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  width: 100%;
+  grid-template-areas: 'desc desc desc img img img';
   height: 100%;
+  width: 100%;
+  @media (max-width: 980px) {
+    grid-template-areas: 'img' 'desc';
+  }
 `;
 export default function Education() {
   const container = {
@@ -123,7 +140,9 @@ export default function Education() {
               target='_blank'
               rel='noreferrer'
             >
-              <Image src={Marvel} alt='Marvel' />
+              <ImageDivStyled>
+                <ImageStyled src={Marvel} alt='Marvel' />
+              </ImageDivStyled>
               <ProjectDescriptionStyled>
                 <h1>Marvel Catalog Viewer</h1>
                 <h2>
@@ -147,7 +166,9 @@ export default function Education() {
                   with React
                 </h2>
               </ProjectDescriptionStyled>
-              <Image src={GetItDone} alt='Get It Done' />
+              <ImageDivStyled>
+                <ImageStyled src={GetItDone} alt='Get It Done' />
+              </ImageDivStyled>
             </ARightStyled>
           </ProjectBlockStyled>
           <ProjectBlockStyled variants={projectLeft}>
@@ -156,7 +177,9 @@ export default function Education() {
               target='_blank'
               rel='noreferrer'
             >
-              <Image src={SightGame} alt='Sight Words Game' />
+              <ImageDivStyled>
+                <ImageStyled src={SightGame} alt='Sight Words Game' />
+              </ImageDivStyled>
               <ProjectDescriptionStyled>
                 <h1>Sight Word Game</h1>
                 <h2>
@@ -178,7 +201,13 @@ export default function Education() {
                   A site I built for my upcoming wedding. Built with React.
                 </h2>
               </ProjectDescriptionStyled>
-              <Image src={Wedding} alt='Wedding Site' />
+              <ImageDivStyled>
+                <ImageStyled
+                  src={Wedding}
+                  alt='Wedding Site'
+                  layout='responsive'
+                />
+              </ImageDivStyled>
             </ARightStyled>
           </ProjectBlockStyled>
         </MainProjectsStyled>

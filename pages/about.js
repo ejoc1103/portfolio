@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence, animate } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Profile from '../public/Profile.jpg';
 
 const ContainerStyled = styled(motion.div)`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   text-align: center;
   color: ${({ theme }) => theme.textOne};
   align-items: center;
@@ -22,40 +22,31 @@ const HeaderStyled = styled.div`
   justify-items: center;
   background-color: ${({ theme }) => theme.primaryColor};
   font-size: 2.5em;
-  grid-column: span 2;
   width: 100%;
   padding: 2rem;
 `;
-const TldrStyled = styled(motion.div)`
-  width: 75%;
-  display: grid;
-  grid-column: span 2;
-  grid-template-columns: 1fr 2fr;
-`;
 const PicContainerStyled = styled(motion.div)`
-  background-color: ${({ theme }) => theme.textOne};
   float: left;
+  background-color: ${({ theme }) => theme.primaryColor};
 `;
 const ProfileImageStyled = styled(Image)``;
 const InfoContainerStyled = styled(motion.div)`
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr;
+  width: 75%;
+  grid-template-columns: 1fr 2fr;
 `;
 const SubheadStyled = styled.div`
-  font-size: 2em;
+  display: grid;
+  align-items: center;
+  font-size: 3em;
   background-color: ${({ theme }) => theme.thirdColor};
-  text-align: center;
-  > h2 {
-    font-family: ExtraBold 800 Italic;
-  }
 `;
 const InfoStyled = styled.div`
   display: grid;
+  grid-column: span 2;
   align-items: center;
   justify-items: center;
   background-color: ${({ theme }) => theme.primaryColor};
-  grid-column: span 2;
   font-size: 1.5em;
   color: white;
   padding: 2% 20% 2% 20%;
@@ -66,7 +57,6 @@ const InfoStyledTwo = styled(motion.div)`
   justify-items: center;
   gap: 25px;
   background-color: ${({ theme }) => theme.primaryColor};
-  grid-column: span 2;
   font-size: 1.5em;
   color: white;
   padding: 2% 15% 2% 15%;
@@ -75,7 +65,6 @@ const FullStoryStyled = styled(motion.div)`
   display: grid;
   width: 75%;
   grid-template-columns: 1fr;
-  grid-column: span 2;
   padding-bottom: 50px;
 `;
 const DivStyled = styled(motion.div)`
@@ -128,6 +117,7 @@ export default function About() {
       opacity: 1,
       transition: {
         duration: 2,
+        delay: 2,
       },
     },
   };
@@ -190,33 +180,38 @@ export default function About() {
             About Me
           </motion.h1>
         </HeaderStyled>
-        <TldrStyled key='c2'>
+
+        <InfoContainerStyled
+          key='c5'
+          variants={firstInfoVar}
+          initial='hidden'
+          animate='show'
+        >
           <PicContainerStyled
             key='c3'
             variants={imageVar}
             initial='hidden'
             animate='show'
           >
-            <ProfileImageStyled key='c4' src={Profile} alt='Profile' />
+            <ProfileImageStyled
+              key='c4'
+              src={Profile}
+              alt='Profile'
+              layout='responsive'
+            />
           </PicContainerStyled>
-          <InfoContainerStyled
-            key='c5'
-            variants={firstInfoVar}
-            initial='hidden'
-            animate='show'
-          >
-            <SubheadStyled key='c5'>
-              <h2>TLDR:</h2>
-            </SubheadStyled>
-            <InfoStyled key='c6'>
-              <p>
-                Web Developer with hands-on experience in developing a variety
-                of websites by leveraging advanced skills in Frontend and
-                Backend programming.
-              </p>
-            </InfoStyled>
-          </InfoContainerStyled>
-        </TldrStyled>
+          <SubheadStyled key='c5'>
+            <h2>TLDR:</h2>
+          </SubheadStyled>
+          <InfoStyled key='c6'>
+            <p>
+              Web Developer with hands-on experience in developing a variety of
+              websites by leveraging advanced skills in Frontend and Backend
+              programming.
+            </p>
+          </InfoStyled>
+        </InfoContainerStyled>
+
         <FullStoryStyled
           key='c7'
           variants={fullStoryVar}
@@ -271,8 +266,6 @@ export default function About() {
           planning, and implementing tactical sales/marketing strategies to
           achieve ambitious sales goals. I'm capable of collaborating closely
           with senior web developers to plan and execute new web features.
-          Expert in connecting web applications to backend server data using
-          JavaScript language. 
           `}
               </ParagraphsStyled>
 
@@ -284,7 +277,7 @@ export default function About() {
               >
                 {`
           My soft skills are second to none. Connect with
-          me today or send me an email at ejoc1103@gmail.com if you want to
+          me through my connect page or send me directly at ejoc1103@gmail.com if you want to
           discuss additional details regarding my work experience and the skills
           I have to offer.`}
               </ParagraphsStyled>

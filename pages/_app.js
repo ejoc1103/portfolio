@@ -11,7 +11,9 @@ const GlobalStyle = createGlobalStyle`
 body{
   min-height: 100%;
   overflow-x: hidden;
-  background-color: ${({ theme }) => theme.secondaryColor}
+  background-color: ${({ theme }) => theme.secondaryColor};
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
 }
 a{
   text-decoration: none;

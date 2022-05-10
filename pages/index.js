@@ -18,24 +18,37 @@ const Container = styled.div`
     'edu edu proj'
     'about main proj'
     'about con con';
+  @media (max-width: 1050px) {
+    grid-template-areas:
+      'edu proj'
+      'main main'
+      'about con';
+  }
+  @media (max-width: 800px) {
+    grid-template-areas:
+      'main'
+      'proj'
+      'about'
+      'con'
+      'edu';
+  }
 `;
 
 const MainStyled = styled(motion.div)`
   display: grid;
-  border: 1.5em solid ${({ theme }) => theme.secondaryColor};
   font-weight: bold;
   grid-area: main;
-  font-family: ExtraBold 800 Italic;
+  font-family: 'Merriweather Sans', sans-serif, ExtraBold 800 Italic;
   justify-content: center;
   align-content: center;
   font-size: 3em;
-  > a {
-    color: ${({ theme }) => theme.textTwo};
+  color: ${({ theme }) => theme.headerText};
+  @media (max-width: 1150px) {
+    font-size: 2.5em;
   }
 `;
 
-const Edu = styled(motion.div)`
-  cursor: pointer;
+const Edu = styled(motion.a)`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
   color: ${({ theme }) => theme.textThree};
@@ -45,13 +58,14 @@ const Edu = styled(motion.div)`
   font-family: 'Merriweather', serif;
   font-size: 3em;
   background-color: ${({ theme }) => theme.secondaryColor};
-  > a {
-    color: ${({ theme }) => theme.textThree};
+  cursor: pointer;
+  color: ${({ theme }) => theme.textThree};
+  @media (max-width: 1150px) {
+    font-size: 2.5em;
   }
 `;
 
-const Proj = styled(motion.div)`
-  cursor: pointer;
+const Proj = styled(motion.a)`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
@@ -61,13 +75,14 @@ const Proj = styled(motion.div)`
   font-family: 'Merriweather', serif;
   font-size: 3em;
   background-color: ${({ theme }) => theme.secondaryColor};
-  > a {
-    color: ${({ theme }) => theme.textThree};
+  cursor: pointer;
+  color: ${({ theme }) => theme.textThree};
+  @media (max-width: 1150px) {
+    font-size: 2.5em;
   }
 `;
 
-const About = styled(motion.div)`
-  cursor: pointer;
+const About = styled(motion.a)`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
@@ -77,13 +92,17 @@ const About = styled(motion.div)`
   font-family: 'Merriweather', serif;
   font-size: 3em;
   background-color: ${({ theme }) => theme.secondaryColor};
-  > a {
-    color: ${({ theme }) => theme.textThree};
+  color: ${({ theme }) => theme.textThree};
+  cursor: pointer;
+  @media (max-width: 1150px) {
+    font-size: 2.5em;
+  }
+  @media (max-width: 800px) {
+    border: 1.5em solid ${({ theme }) => theme.primaryColor};
   }
 `;
 
-const Con = styled(motion.div)`
-  cursor: pointer;
+const Con = styled(motion.a)`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
   font-size: 3em;
@@ -92,12 +111,15 @@ const Con = styled(motion.div)`
   align-content: center;
   font-family: 'Merriweather', serif;
   background-color: ${({ theme }) => theme.secondaryColor};
-  > a {
-    color: ${({ theme }) => theme.textThree};
+  cursor: pointer;
+  color: ${({ theme }) => theme.textThree};
+  @media (max-width: 1150px) {
+    font-size: 2.5em;
+  }
+  @media (max-width: 800px) {
+    border: 1.5em solid ${({ theme }) => theme.thirdColor};
   }
 `;
-
-const styledA = styled(motion.a)``;
 
 export default function Home() {
   const { id, setTheme } = useContext(ThemeContext);
@@ -228,56 +250,48 @@ export default function Home() {
           </motion.div>
         </MainStyled>
 
-        <Edu
-          key='edu'
-          variants={eduVar}
-          whileHover='hover'
-          initial='hidden'
-          animate='show'
-        >
-          <a>
-            <Link href='/education' passHref>
-              <h2>{`Education`}</h2>
-            </Link>
-          </a>
-        </Edu>
-        <Proj key='projDiv' variants={projVar} whileHover='hover'>
-          <a>
-            <Link href='/projects' passHref>
-              <motion.h2
-                key='proj'
-                variants={projVar}
-                initial='hidden'
-                animate='show'
-              >{`Projects`}</motion.h2>
-            </Link>
-          </a>
-        </Proj>
-        <About key='aboutDiv' variants={aboutVar} whileHover='hover'>
-          <a>
-            <Link href='/about' passHref>
-              <motion.h2
-                key='about'
-                variants={aboutVar}
-                initial='hidden'
-                animate='show'
-              >{`About`}</motion.h2>
-            </Link>
-          </a>
-        </About>
-        <Con
-          key='con'
-          variants={conVar}
-          whileHover='hover'
-          initial='hidden'
-          animate='show'
-        >
-          <a>
-            <Link href='/contact' passHref>
-              <h2>{`Contact`}</h2>
-            </Link>
-          </a>
-        </Con>
+        <Link href='/education' passHref>
+          <Edu
+            key='edu'
+            variants={eduVar}
+            whileHover='hover'
+            initial='hidden'
+            animate='show'
+          >
+            <h2>{`Education`}</h2>
+          </Edu>
+        </Link>
+        <Link href='/projects' passHref>
+          <Proj key='projDiv' variants={projVar} whileHover='hover'>
+            <motion.h2
+              key='proj'
+              variants={projVar}
+              initial='hidden'
+              animate='show'
+            >{`Projects`}</motion.h2>
+          </Proj>
+        </Link>
+        <Link href='/about' passHref>
+          <About key='aboutDiv' variants={aboutVar} whileHover='hover'>
+            <motion.h2
+              key='about'
+              variants={aboutVar}
+              initial='hidden'
+              animate='show'
+            >{`About`}</motion.h2>
+          </About>
+        </Link>
+        <Link href='/contact' passHref>
+          <Con
+            key='con'
+            variants={conVar}
+            whileHover='hover'
+            initial='hidden'
+            animate='show'
+          >
+            <h2>{`Contact`}</h2>
+          </Con>
+        </Link>
       </Container>
     </>
   );
