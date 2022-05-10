@@ -12,6 +12,8 @@ const ContainerStyled = styled(motion.div)`
   color: ${({ theme }) => theme.textOne};
   align-items: center;
   justify-items: center;
+  align-content: center;
+  justify-content: center;
   background-color: ${({ theme }) => theme.secondaryColor};
   padding-bottom: 50px;
 `;
