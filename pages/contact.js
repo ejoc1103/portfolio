@@ -2,15 +2,12 @@ import { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Twitter from '../public/twitterIcon.png';
 import LinkedIn from '../public/LinkedIn.png';
-import Instagram from '../public/InstagramIcon.png';
 import Github from '../public/github.png';
 import { FaPaperPlane } from 'react-icons/fa';
 
-//TODO add a loading situation for contact submission
 const ContainerStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -31,6 +28,7 @@ const HeaderStyled = styled(motion.div)`
 `;
 const FormStyled = styled(motion.form)`
   display: grid;
+  grid-area: form;
   padding: 10px;
   grid-template-columns: 1fr;
   border: 10px solid ${({ theme }) => theme.primaryColor};
@@ -38,11 +36,15 @@ const FormStyled = styled(motion.form)`
 const ContactPicksStyled = styled(motion.div)`
   display: grid;
   padding: 10px;
+  grid-area: soc;
   grid-template-columns: 1fr;
   justify-content: center;
   align-content: space-around;
   background-color: ${({ theme }) => theme.textOne};
   border: 10px solid ${({ theme }) => theme.primaryColor};
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 const ImageStyled = styled(Image)`
   height: 2rem;
@@ -57,10 +59,13 @@ const MainContentStyled = styled.div`
   justify-self: center;
   display: grid;
   width: 80%;
-  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 'form form soc';
   grid-column: span 2;
   border: 10px solid ${({ theme }) => theme.primaryColor};
   margin: 2rem;
+  @media (max-width: 800px) {
+    grid-template-areas: 'form' 'soc';
+  }
 `;
 
 const SendStyled = styled(motion.div)`

@@ -49,6 +49,10 @@ const MainStyled = styled(motion.div)`
   }
 `;
 
+const HeaderStyled = styled(motion.h1)`
+  text-align: center;
+`;
+
 const Edu = styled(motion.a)`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
@@ -234,12 +238,12 @@ export default function Home() {
           initial='start'
           animate='show'
         >
-          <motion.h1
+          <HeaderStyled
             key='mainWords'
             variants={mainWordsVar}
             initial='start'
             animate='show'
-          >{`Ed O'Connor`}</motion.h1>
+          >{`Ed O'Connor`}</HeaderStyled>
 
           <motion.div
             key='toggle'
