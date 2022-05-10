@@ -11,6 +11,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 const ContainerStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
   text-align: center;
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textTwo};
@@ -18,6 +19,7 @@ const ContainerStyled = styled.div`
 `;
 const HeaderStyled = styled(motion.div)`
   display: grid;
+  width: 100%;
   justify-content: center;
   align-content: center;
   padding: 2rem;
@@ -32,6 +34,9 @@ const FormStyled = styled(motion.form)`
   padding: 10px;
   grid-template-columns: 1fr;
   border: 10px solid ${({ theme }) => theme.primaryColor};
+  @media (max-width: 400px) {
+    justify-items: center;
+  }
 `;
 const ContactPicksStyled = styled(motion.div)`
   display: grid;
@@ -66,6 +71,9 @@ const MainContentStyled = styled.div`
   @media (max-width: 800px) {
     grid-template-areas: 'form' 'soc';
   }
+  @media (max-width: 480px) {
+    width: 95%;
+  }
 `;
 
 const SendStyled = styled(motion.div)`
@@ -91,6 +99,10 @@ const LabelStyled = styled.label`
   text-align: start;
   font-size: 2em;
   color: ${({ theme }) => theme.textTwo};
+  @media (max-width: 400px) {
+    font-size: 1em;
+    width: 70%;
+  }
 `;
 
 const SpacerStyled = styled.div`
@@ -100,16 +112,32 @@ const SpacerStyled = styled.div`
 `;
 const InputStyled = styled.input`
   font-size: 2em;
+  @media (max-width: 400px) {
+    font-size: 1em;
+    width: 70%;
+  }
 `;
 const TextAreaStyled = styled.textarea`
   font-size: 2em;
+  @media (max-width: 400px) {
+    font-size: 1em;
+    width: 70%;
+  }
 `;
 const SubmitStyled = styled.input`
   justify-self: end;
   text-align: center;
   font-size: 2em;
   padding: 5px;
+  margin-top: 10px;
   width: 30%;
+  background-color: ${({ theme }) => theme.primaryColor};
+  color: ${({ theme }) => theme.textOne};
+  @media (max-width: 400px) {
+    font-size: 1em;
+    width: 70%;
+    justify-self: center;
+  }
 `;
 export default function Contact() {
   const form = useRef();
