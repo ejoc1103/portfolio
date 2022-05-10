@@ -27,6 +27,9 @@ const HeaderStyled = styled.div`
   font-size: 2.5em;
   width: 100%;
   padding: 2rem;
+  @media (max-width: 550px) {
+    font-size: 2em;
+  }
 `;
 const InfoContainerStyled = styled(motion.div)`
   display: grid;

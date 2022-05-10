@@ -16,6 +16,11 @@ const ContainerStyled = styled.div`
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textTwo};
   padding-bottom: 90px;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
 `;
 const HeaderStyled = styled(motion.div)`
   display: grid;
@@ -27,6 +32,9 @@ const HeaderStyled = styled(motion.div)`
   grid-column: span 2;
   font-size: 2.5em;
   color: ${({ theme }) => theme.textOne};
+  @media (max-width: 550px) {
+    font-size: 2em;
+  }
 `;
 const FormStyled = styled(motion.form)`
   display: grid;

@@ -11,10 +11,14 @@ const ContainerStyled = styled.div`
   margin: 0;
   display: grid;
   text-align: center;
-  justify-items: center;
   background: ${({ theme }) => theme.secondaryColor};
   color: ${({ theme }) => theme.textOne};
   padding-bottom: 50px;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
 `;
 
 const SchoolsStyled = styled(motion.div)`
@@ -36,6 +40,9 @@ const HeaderStyled = styled.div`
   background-color: ${({ theme }) => theme.primaryColor};
   grid-column: span 2;
   font-size: 2.5em;
+  @media (max-width: 550px) {
+    font-size: 2em;
+  }
 `;
 
 const SchoolOneStyled = styled(motion.div)`

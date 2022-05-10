@@ -15,19 +15,14 @@ const ContainerStyled = styled.div`
   gap: 15px;
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textOne};
-  justify-items: center;
   padding-bottom: 90px;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
 `;
 
-const MainProjectsStyled = styled(motion.div)`
-  display: grid;
-  width: 60%;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 15px;
-  grid-column: span 2;
-  grid-template-columns: 1fr;
-  padding-top: 40px;
-`;
 const HeaderStyled = styled.div`
   display: grid;
   justify-items: center;
@@ -37,6 +32,18 @@ const HeaderStyled = styled.div`
   width: 100%;
   grid-column: span 2;
   font-size: 2.5em;
+  @media (max-width: 550px) {
+    font-size: 2em;
+  }
+`;
+const MainProjectsStyled = styled(motion.div)`
+  display: grid;
+  width: 60%;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  grid-column: span 2;
+  grid-template-columns: 1fr;
+  padding-top: 40px;
 `;
 
 const ProjectBlockStyled = styled(motion.div)`
