@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 body{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
   background-color: ${({ theme }) => theme.secondaryColor};
   font-family: 'Merriweather', serif;
   font-weight: 300;
