@@ -9,8 +9,6 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 body{
-  min-height: 100%;
-  overflow-x: hidden;
   background-color: ${({ theme }) => theme.secondaryColor};
   font-family: 'Merriweather', serif;
   font-weight: 300;

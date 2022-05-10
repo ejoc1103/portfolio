@@ -44,6 +44,9 @@ const MainProjectsStyled = styled(motion.div)`
   grid-column: span 2;
   grid-template-columns: 1fr;
   padding-top: 40px;
+  @media (max-width: 685px) {
+    padding-bottom: 100px;
+  }
 `;
 
 const ProjectBlockStyled = styled(motion.div)`
