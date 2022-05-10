@@ -47,6 +47,9 @@ const MainStyled = styled(motion.div)`
   @media (max-width: 1150px) {
     font-size: 2.5em;
   }
+  @media (max-width: 800px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const HeaderStyled = styled(motion.h1)`
