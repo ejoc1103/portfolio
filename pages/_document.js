@@ -17,10 +17,6 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@1,500;1,800&family=Merriweather:ital,wght@1,300&display=swap'
             rel='stylesheet'
           />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1.0'
-          />
         </Head>
         <body>
           <Main />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import ProTheme from '../themes/pro-theme';
 import FunTheme from '../themes/fun-theme';
@@ -33,6 +34,9 @@ function MyApp({ Component, pageProps }) {
         },
       }}
     >
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      </Head>
       <GlobalStyle />
       <Component {...pageProps} />;
     </ThemeProvider>
