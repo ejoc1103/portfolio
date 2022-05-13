@@ -21,9 +21,19 @@ const Container = styled.div`
 
 const NavSection = styled.div`
   display: grid;
-  background-color: ${({ theme }) => theme.textOne};
+  background-color: ${({ theme }) => theme.thirdColor};
   border: 5px solid ${({ theme }) => theme.primaryColor};
-  color: ${({ theme }) => theme.textTwo};
+  font-size: 1.5em;
+  justify-content: center;
+  align-content: center;
+`;
+const NavA = styled.a`
+  color: ${({ theme }) => theme.textOne};
+  font-weight: 800;
+  font-size: 1.1em;
+`;
+const ToggleSection = styled.div`
+  display: grid;
   font-size: 1.5em;
   justify-content: center;
   align-content: center;
@@ -34,33 +44,31 @@ export default function Navbar() {
   return (
     <Container>
       <NavSection>
-        <Link href='/about'>
-          <a>About</a>
+        <Link href='/about' passHref>
+          <NavA>About</NavA>
         </Link>
       </NavSection>
       <NavSection>
-        <Link href='/projects'>
-          <a>Projects</a>
+        <Link href='/projects' passHref>
+          <NavA>Projects</NavA>
+        </Link>
+      </NavSection>
+      <ToggleSection>
+        <Toggle isActive={id === 'fun'} onToggle={setTheme} />
+      </ToggleSection>
+      <NavSection>
+        <Link href='/' passHref>
+          <NavA>Home</NavA>
         </Link>
       </NavSection>
       <NavSection>
-        <Link href='/'>
-          <a>{`Ed O'Connor`}</a>
+        <Link href='/education' passHref>
+          <NavA>Education</NavA>
         </Link>
       </NavSection>
       <NavSection>
-        <div>
-          <Toggle isActive={id === 'fun'} onToggle={setTheme} />
-        </div>
-      </NavSection>
-      <NavSection>
-        <Link href='/education'>
-          <a>Education</a>
-        </Link>
-      </NavSection>
-      <NavSection>
-        <Link href='/contact'>
-          <a>Contact</a>
+        <Link href='/contact' passHref>
+          <NavA>Contact</NavA>
         </Link>
       </NavSection>
     </Container>

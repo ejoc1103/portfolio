@@ -163,7 +163,6 @@ export default function About() {
       },
     },
   };
-  console.log(toggleStory);
   return (
     <ContainerStyled key='c1'>
       <HeaderStyled key='h1'>
