@@ -16,6 +16,7 @@ body{
   background-color: ${({ theme }) => theme.secondaryColor};
   font-family: 'Merriweather', serif;
   font-weight: 300;
+  overflow-x: hidden;
 }
 a{
   text-decoration: none;
