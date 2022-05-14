@@ -62,6 +62,7 @@ const ProjectDescriptionStyled = styled.div`
   grid-area: desc;
   border: 12px solid ${({ theme }) => theme.textOne};
   color: ${({ theme }) => theme.textOne};
+  padding: 20px;
 `;
 
 const ImageDivStyled = styled.div`
@@ -120,7 +121,7 @@ export default function Education() {
     show: { x: 0 },
     transition: {
       type: 'spring',
-      duration: 1.5,
+      stifness: 400,
     },
   };
   const projectLeft = {
@@ -128,7 +129,7 @@ export default function Education() {
     show: { x: 0 },
     transition: {
       type: 'spring',
-      duration: 1.5,
+      stifness: 400,
     },
   };
   return (

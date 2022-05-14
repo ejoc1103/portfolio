@@ -81,6 +81,7 @@ const SchoolDescriptionStyled = styled.div`
   justify-items: center;
   align-items: center;
   border: 12px solid ${({ theme }) => theme.textOne};
+  padding: 20px;
 `;
 const ImageStyled = styled(Image)`
   grid-area: pic;

@@ -70,6 +70,11 @@ const InfoStyled = styled.div`
     grid-column: span 2;
   }
 `;
+const SkillsContainerStyled = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 90%;
+`;
 const InfoStyledTwo = styled(motion.div)`
   display: ${({ $heightcheck }) => ($heightcheck ? 'grid' : 'none')};
   align-items: center;
@@ -108,7 +113,9 @@ const XStyled = styled(motion.h1)`
   background-color: ${({ theme }) => theme.secondaryColor};
   color: ${({ theme }) => theme.primaryColor};
 `;
-const ParagraphsStyled = styled(motion.p)``;
+const ParagraphsStyled = styled(motion.p)`
+  display: ${({ $heightcheck }) => ($heightcheck ? 'block' : 'none')};
+`;
 export default function About() {
   const [toggleStory, setToggleStory] = useState(false);
   //Header Motion Variants to slide in the header from the left
@@ -206,7 +213,18 @@ export default function About() {
           </p>
         </InfoStyled>
       </InfoContainerStyled>
-
+      <SkillsContainerStyled>
+        <SubheadStyled>
+          <h2>Skills</h2>
+        </SubheadStyled>
+        <InfoStyled>
+          <p>
+            Javascript | ReactJs | GraphQL | TypeScript | jQuery | CSS5 |
+            Tailwind CSS | StyledComponents | NodeJs | HTML5 | Bootstrap | MySQL
+            | ExpressJs | Apollo | API Integration | Asynchronous Javascript
+          </p>
+        </InfoStyled>
+      </SkillsContainerStyled>
       <FullStoryStyled
         key='c7'
         variants={fullStoryVar}
@@ -237,7 +255,7 @@ export default function About() {
           variants={fullInfoVar}
           animate={toggleStory ? 'show' : 'hidden'}
         >
-          <ParagraphsStyled>
+          <ParagraphsStyled $heightcheck={toggleStory}>
             {`Hello Everyone! I'm Ed O’Connor, a meticulous and diligent
           professional with a proven track record of managing daily store
           operations while adhering to set company standards. Throughout my
@@ -246,7 +264,7 @@ export default function About() {
           operational effectiveness.`}
           </ParagraphsStyled>
 
-          <ParagraphsStyled>
+          <ParagraphsStyled $heightcheck={toggleStory}>
             {` 
           I have a remarkable background in managing,
           planning, and implementing tactical sales/marketing strategies to
@@ -255,7 +273,7 @@ export default function About() {
           `}
           </ParagraphsStyled>
 
-          <ParagraphsStyled>
+          <ParagraphsStyled $heightcheck={toggleStory}>
             {`
           My soft skills are second to none. Connect with
           me through my connect page or send me directly at ejoc1103@gmail.com if you want to

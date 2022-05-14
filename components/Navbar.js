@@ -27,7 +27,7 @@ const NavSection = styled.div`
   justify-content: center;
   align-content: center;
 `;
-const NavA = styled.a`
+const NavH1 = styled.h1`
   color: ${({ theme }) => theme.textOne};
   font-weight: 800;
   font-size: 1.1em;
@@ -43,34 +43,44 @@ export default function Navbar() {
   const { id, setTheme } = useContext(ThemeContext);
   return (
     <Container>
-      <NavSection>
-        <Link href='/about' passHref>
-          <NavA>About</NavA>
-        </Link>
-      </NavSection>
-      <NavSection>
-        <Link href='/projects' passHref>
-          <NavA>Projects</NavA>
-        </Link>
-      </NavSection>
+      <Link href='/about' passHref>
+        <a>
+          <NavSection>
+            <NavH1>About</NavH1>
+          </NavSection>
+        </a>
+      </Link>
+      <Link href='/projects' passHref>
+        <a>
+          <NavSection>
+            <NavH1>Projects</NavH1>
+          </NavSection>
+        </a>
+      </Link>
       <ToggleSection>
         <Toggle isActive={id === 'fun'} onToggle={setTheme} />
       </ToggleSection>
-      <NavSection>
-        <Link href='/' passHref>
-          <NavA>Home</NavA>
-        </Link>
-      </NavSection>
-      <NavSection>
-        <Link href='/education' passHref>
-          <NavA>Education</NavA>
-        </Link>
-      </NavSection>
-      <NavSection>
-        <Link href='/contact' passHref>
-          <NavA>Contact</NavA>
-        </Link>
-      </NavSection>
+      <Link href='/' passHref>
+        <a>
+          <NavSection>
+            <NavH1>Home</NavH1>
+          </NavSection>
+        </a>
+      </Link>
+      <Link href='/education' passHref>
+        <a>
+          <NavSection>
+            <NavH1>Education</NavH1>
+          </NavSection>
+        </a>
+      </Link>
+      <Link href='/contact' passHref>
+        <a>
+          <NavSection>
+            <NavH1>Contact</NavH1>
+          </NavSection>
+        </a>
+      </Link>
     </Container>
   );
 }

@@ -11,10 +11,10 @@ import { FaPaperPlane } from 'react-icons/fa';
 const ContainerStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
   text-align: center;
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textTwo};
+  width: 100vw;
   padding-bottom: 90px;
   align-items: center;
   justify-items: center;
