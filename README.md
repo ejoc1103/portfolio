@@ -4,21 +4,25 @@ Hi! - welcome to _My Portfolio_!
 
 Included is a little information about me, my education, some of my projects, and a contact page
 
+## Home
+
+![Home](portfolio/public/HomeScreen.png)
+
 ## About Me
 
-![standard](get-it-done/public/images/screenshot1.png)
+![About Me](portfolio/public/About.png)
 
 ## Projects
 
-![priority](get-it-done/public/images/screenshot2.png)
+![Projects](portfolio/public/Projects.png)
 
 ## Education
 
-![Planner](get-it-done/public/images/screenshot3.png)
+![Education](portfolio/public/Education.png)
 
 ## Contact
 
-![Planner](get-it-done/public/images/screenshot3.png)
+![Contact](portfolio/public/Contact.png)
 
 ### Tools used
 
