@@ -6,23 +6,23 @@ Included is a little information about me, my education, some of my projects, an
 
 ## Home
 
-![Home](portfolio/public/HomeScreen.png)
+![Home](public/HomeScreen.png)
 
 ## About Me
 
-![About Me](portfolio/public/About.png)
+![About Me](public/About.png)
 
 ## Projects
 
-![Projects](portfolio/public/Projects.png)
+![Projects](public/Projects.png)
 
 ## Education
 
-![Education](portfolio/public/Education.png)
+![Education](public/Education.png)
 
 ## Contact
 
-![Contact](portfolio/public/Contact.png)
+![Contact](public/Contact.png)
 
 ### Tools used
 
