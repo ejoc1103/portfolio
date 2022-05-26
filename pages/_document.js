@@ -11,10 +11,7 @@ class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          // Useful for wrapping the whole react tree
-          enhanceApp: App => App,
-          // Useful for wrapping in a per-page basis
-          enhanceComponent: Component => Component,
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
         });
 
       // Run the parent `getInitialProps`, it now includes the custom `renderPage`
