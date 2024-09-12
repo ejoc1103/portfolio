@@ -202,7 +202,7 @@ export default function Education() {
           </ProjectBlockStyled>
           <ProjectBlockStyled variants={projectRight}>
             <ARightStyled
-              href='https://www.shelly-ed-2023.com/'
+              href='https://shelly-ed-2023.netlify.app/'
               target='_blank'
               rel='noreferrer'
             >

@@ -38,5 +38,5 @@ _My Portfolio_ is built with NextJs.  I used styled components for the styling, 
 
 ### Site hosted on Vercel here 
 
-[GET-IT-Done](eddev90.vercel.app)
+[Portfolio](eddev90.vercel.app)
 
