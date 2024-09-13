@@ -264,7 +264,7 @@ export default function Contact() {
             </ImageContainer>
             <ImageContainer>
               <a
-                href='https://www.linkedin.com/in/ed-oconnor1103'
+                href='https://www.linkedin.com/in/edjoconnor'
                 target='_blank'
                 rel='noreferrer'
               >
