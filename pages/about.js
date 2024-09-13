@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
-import Profile from '../public/Profile.jpg';
+import Profile from '../public/Profile.jpeg';
 
 const ContainerStyled = styled(motion.div)`
   display: grid;
