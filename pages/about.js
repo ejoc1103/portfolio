@@ -219,9 +219,9 @@ export default function About() {
         </SubheadStyled>
         <InfoStyled>
           <p>
-            Javascript | ReactJs | GraphQL | TypeScript | jQuery | CSS5 |
-            Tailwind CSS | StyledComponents | NodeJs | HTML5 | Bootstrap | MySQL
-            | ExpressJs | Apollo | API Integration | Asynchronous Javascript
+            Java | PostgreSQL | JSON | Spring Boot | Restful APIs | JavaScript | HTML & CSS | Vue.js | Unit Testing (JUnit) | Git |
+            IntelliJ & VSCode | SQL | E/R diagrams | Agile | Responsive Web Design | React.js | NextJs | GraphQl | Python |
+            Bootstrap | MongoDB | JDBC | Integration Testing
           </p>
         </InfoStyled>
       </SkillsContainerStyled>
@@ -276,7 +276,7 @@ export default function About() {
           <ParagraphsStyled $heightcheck={toggleStory}>
             {`
           My soft skills are second to none. Connect with
-          me through my connect page or send me directly at ejoc1103@gmail.com if you want to
+          me through my connect page or visit my linked in if you want to
           discuss additional details regarding my work experience and the skills
           I have to offer.`}
           </ParagraphsStyled>
