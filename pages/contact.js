@@ -1,12 +1,12 @@
-import { useRef, useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
-import Navbar from '../components/Navbar';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import LinkedIn from '../public/LinkedIn.png';
-import Github from '../public/github.png';
-import { FaPaperPlane } from 'react-icons/fa';
+import { useRef, useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
+import Navbar from "../components/Navbar";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import LinkedIn from "../public/LinkedIn.png";
+import Github from "../public/github.png";
+import { FaPaperPlane } from "react-icons/fa";
 
 const ContainerStyled = styled.div`
   display: grid;
@@ -72,12 +72,12 @@ const MainContentStyled = styled.div`
   justify-self: center;
   display: grid;
   width: 80%;
-  grid-template-areas: 'form form soc';
+  grid-template-areas: "form form soc";
   grid-column: span 2;
   border: 10px solid ${({ theme }) => theme.primaryColor};
   margin: 2rem;
   @media (max-width: 800px) {
-    grid-template-areas: 'form' 'soc';
+    grid-template-areas: "form" "soc";
   }
   @media (max-width: 480px) {
     width: 95%;
@@ -196,7 +196,10 @@ export default function Contact() {
     show: { opacity: 1, transition: { delay: 1, duration: 1 } },
   };
 
-  const sendEmail = e => {
+  const sendEmail = (e) => {
+    console.log(process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY);
+    console.log(process.env.NEXT_PUBLIC_YOUR_SERVICE_ID);
+    console.log(process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID);
     e.preventDefault();
     setLoading(true);
     emailjs
@@ -207,11 +210,11 @@ export default function Contact() {
         process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY
       )
       .then(
-        result => {
+        (result) => {
           console.log(result.text);
           setLoading(false);
         },
-        error => {
+        (error) => {
           console.log(error.text);
         }
       );
@@ -219,7 +222,7 @@ export default function Contact() {
 
   return (
     <ContainerStyled>
-      <HeaderStyled variants={headerVar} initial='start' animate='show'>
+      <HeaderStyled variants={headerVar} initial="start" animate="show">
         {loading === true ? <h1>Sending Email</h1> : <h1>Contact Me</h1>}
       </HeaderStyled>
       <SpacerStyled />
@@ -228,54 +231,54 @@ export default function Contact() {
         <MainContentStyled>
           <FormStyled
             variants={formVar}
-            initial='start'
-            animate='show'
+            initial="start"
+            animate="show"
             ref={form}
             onSubmit={sendEmail}
-            id='contact-form'
+            id="contact-form"
           >
             <LabelStyled>Name:</LabelStyled>
-            <InputStyled type='text' name='from_name' />
+            <InputStyled type="text" name="from_name" />
             <LabelStyled>Email:</LabelStyled>
-            <InputStyled type='email' name='from_email' />
+            <InputStyled type="email" name="from_email" />
             <LabelStyled>Phone Number: xxx-xxx-xxxx</LabelStyled>
             <InputStyled
-              type='tel'
-              name='from_phone'
-              pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+              type="tel"
+              name="from_phone"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             />
-            <LabelStyled tyled>Message:</LabelStyled>
-            <TextAreaStyled name='message' />
-            <SubmitStyled type='submit' value='Send' />
+            <LabelStyled>Message:</LabelStyled>
+            <TextAreaStyled name="message" />
+            <SubmitStyled type="submit" value="Send" />
           </FormStyled>
           <ContactPicksStyled
             variants={socialVar}
-            initial='start'
-            animate='show'
+            initial="start"
+            animate="show"
           >
             <ImageContainer>
               <a
-                href='https://github.com/ejoc1103'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/ejoc1103"
+                target="_blank"
+                rel="noreferrer"
               >
-                <ImageStyled src={Github} alt='Github' />
+                <ImageStyled src={Github} alt="Github" />
               </a>
             </ImageContainer>
             <ImageContainer>
               <a
-                href='https://www.linkedin.com/in/edjoconnor'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.linkedin.com/in/edjoconnor"
+                target="_blank"
+                rel="noreferrer"
               >
-                <ImageStyled src={LinkedIn} alt='LinkedIn' />
+                <ImageStyled src={LinkedIn} alt="LinkedIn" />
               </a>
             </ImageContainer>
           </ContactPicksStyled>
         </MainContentStyled>
       ) : (
         <SendStyled onChange={() => handleChange()}>
-          <SendIconStyled variants={sendVar} initial='start' animate='send'>
+          <SendIconStyled variants={sendVar} initial="start" animate="send">
             <FaPaperPlane size={200} />
           </SendIconStyled>
         </SendStyled>
