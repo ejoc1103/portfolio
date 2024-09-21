@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
@@ -71,7 +71,6 @@ const ImageContainer = styled.div`
 const MainContentStyled = styled.div`
   justify-self: center;
   display: grid;
-  width: 80%;
   grid-template-areas: 'form form soc';
   grid-column: span 2;
   border: 10px solid ${({ theme }) => theme.primaryColor};

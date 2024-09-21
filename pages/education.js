@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
-import Udacity from '../public/udacity.png';
+import TechElevator from '../public/techLogo.jpg';
 import Rutgers from '../public/rutgers.png';
 
 const ContainerStyled = styled.div`
@@ -46,13 +46,15 @@ const HeaderStyled = styled.div`
 `;
 
 const SchoolOneStyled = styled(motion.div)`
-  display: grid;
+  display: flex;
   background-color: ${({ theme }) => theme.primaryColor};
   min-height: 250px;
   width: 75%;
-  grid-template-areas: 'pic pic desc desc desc';
   border: 10px solid ${({ theme }) => theme.primaryColor};
+  justify-content: space-between;
   justify-self: center;
+  flex-direction: row-reverse;
+  gap: 10px;
   > div {
     background-color: ${({ theme }) => theme.secondaryColor};
   }
@@ -82,11 +84,17 @@ const SchoolDescriptionStyled = styled.div`
   align-items: center;
   border: 12px solid ${({ theme }) => theme.textOne};
   padding: 20px;
+  flex-grow: 100;
 `;
 const ImageStyled = styled(Image)`
+  display: grid;
   grid-area: pic;
   border: 12px solid ${({ theme }) => theme.TextOne};
 `;
+const ImageTwoStyled = styled(Image)`
+  grid-area: pic;
+  border: 12px solid ${({ theme }) => theme.TextOne};
+`
 export default function Education() {
   const headerVar = {
     show: {
@@ -147,31 +155,29 @@ export default function Education() {
           initial='hidden'
           animate='show'
         >
-          <div></div>
           <SchoolOneStyled
-            variants={schoolOneVar}
-            initial='hidden'
-            animate='show'
-          >
-            <ImageStyled src={Rutgers} alt='Rutgers' />
-            <SchoolDescriptionStyled>
-              <h1>Rutgers Coding Bootcamp</h1>
-              <h2>Full Stack Web Development</h2>
-            </SchoolDescriptionStyled>
-          </SchoolOneStyled>
-          <div></div>
-          <SchoolTwoStyled
             variants={schoolTwoVar}
             initial='hidden'
             animate='show'
           >
             <SchoolDescriptionStyled>
-              <h1>Udacity</h1>
-              <h2>Front End Web Developer Nanodegree</h2>
+              <h1>Tech Elevator</h1>
+              <h2>Full Stack Bootcamp</h2>
             </SchoolDescriptionStyled>
-            <ImageStyled src={Udacity} alt='Udacity' />
+            <ImageStyled src={TechElevator} alt='Tech Elevator' />
+          </SchoolOneStyled>
+
+          <SchoolTwoStyled
+            variants={schoolOneVar}
+            initial='hidden'
+            animate='show'
+          >
+            <ImageTwoStyled src={Rutgers} alt='Rutgers' />
+            <SchoolDescriptionStyled>
+              <h1>Rutgers Coding Bootcamp</h1>
+              <h2>Full Stack Web Development</h2>
+            </SchoolDescriptionStyled>
           </SchoolTwoStyled>
-          <div></div>
         </SchoolsStyled>
       </AnimatePresence>
       <Navbar />

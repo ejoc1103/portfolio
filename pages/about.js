@@ -256,29 +256,23 @@ export default function About() {
           animate={toggleStory ? 'show' : 'hidden'}
         >
           <ParagraphsStyled $heightcheck={toggleStory}>
-            {`Hello Everyone! I'm Ed O’Connor, a meticulous and diligent
-          professional with a proven track record of managing daily store
-          operations while adhering to set company standards. Throughout my
-          career, I have remained a resourceful and results-driven professional
-          with a record of leading and building top-performing teams to boost
-          operational effectiveness.`}
+            {`I'm Ed O’Connor, I'm and endlessly curious problem solver! My experience at all levels of retail from part time sales associate to Lead of operations, has given me a strong foundation in problem-solving, leadership, and achieving ambitious goals.`}
           </ParagraphsStyled>
 
           <ParagraphsStyled $heightcheck={toggleStory}>
-            {` 
-          I have a remarkable background in managing,
-          planning, and implementing tactical sales/marketing strategies to
-          achieve ambitious sales goals. I'm capable of collaborating closely
-          with senior web developers to plan and execute new web features.
-          `}
+            {`Driven by that love of problem solving and a desire to contribute to impactful projects, I’m transitioning into software engineering. Currently, I’m focused on mastering both front-end and back-end development, utilizing technologies like Java, Spring Boot, Vue.js, PostgreSQL`}
           </ParagraphsStyled>
 
           <ParagraphsStyled $heightcheck={toggleStory}>
-            {`
-          My soft skills are second to none. Connect with
-          me through my connect page or visit my linked in if you want to
-          discuss additional details regarding my work experience and the skills
-          I have to offer.`}
+            {
+              `I’m attending Tech Elevator, a top-tier software development bootcamp, to jumpstart my career in software engineering. This immersive experience is equipping me with the practical skills and hands-on training needed to make an immediate impact in the tech industry.`
+            }
+          </ParagraphsStyled>
+
+          <ParagraphsStyled $heightcheck={toggleStory}>
+            {
+              `I'm so excited to bring my well crafted communication and team building skills into a new industry. I can't wait to bring those  skills along with my ever expanding technical skills to a software developer role. Feel free to connect with me through my contact page below if you'd like to discuss opportunities or learn more about how my skills and experience can contribute to your team.`
+            }
           </ParagraphsStyled>
         </InfoStyledTwo>
       </FullStoryStyled>

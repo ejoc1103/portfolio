@@ -6,14 +6,11 @@ import styled, { ThemeContext } from 'styled-components';
 import Toggle from '../components/Toggle';
 
 const Container = styled.div`
-  position: fixed;
-  padding: 0;
-  margin: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   display: grid;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
     'edu edu proj'
     'about main proj'
@@ -41,7 +38,6 @@ const MainStyled = styled(motion.div)`
   grid-area: main;
   font-family: 'Merriweather Sans', sans-serif, ExtraBold 800 Italic;
   justify-content: center;
-  align-content: center;
   font-size: 3em;
   color: ${({ theme }) => theme.headerText};
   @media (max-width: 1150px) {
@@ -58,6 +54,7 @@ const ToggleDivStyled = styled.div`
 
 const HeaderStyled = styled(motion.h1)`
   text-align: center;
+  color: white;
 `;
 
 const Edu = styled(motion.a)`
@@ -66,14 +63,13 @@ const Edu = styled(motion.a)`
   color: ${({ theme }) => theme.textThree};
   grid-area: edu;
   justify-content: center;
-  align-content: center;
   font-family: 'Merriweather', serif;
-  font-size: 3em;
+  font-size: 2.5em;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
   @media (max-width: 1150px) {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
 `;
 
@@ -82,15 +78,14 @@ const Proj = styled(motion.a)`
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
   grid-area: proj;
-  justify-content: center;
   align-content: center;
   font-family: 'Merriweather', serif;
-  font-size: 3em;
+  font-size: 2.5em;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
   @media (max-width: 1150px) {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
 `;
 
@@ -99,15 +94,14 @@ const About = styled(motion.a)`
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
   grid-area: about;
-  justify-content: center;
   align-content: center;
   font-family: 'Merriweather', serif;
-  font-size: 3em;
+  font-size: 2.5em;
   background-color: ${({ theme }) => theme.secondaryColor};
   color: ${({ theme }) => theme.textThree};
   cursor: pointer;
   @media (max-width: 1150px) {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   @media (max-width: 800px) {
     border: 1.5em solid ${({ theme }) => theme.primaryColor};
@@ -117,7 +111,7 @@ const About = styled(motion.a)`
 const Con = styled(motion.a)`
   display: grid;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
-  font-size: 3em;
+  font-size: 2.5em;
   grid-area: con;
   justify-content: center;
   align-content: center;
@@ -126,7 +120,7 @@ const Con = styled(motion.a)`
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
   @media (max-width: 1150px) {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   @media (max-width: 800px) {
     border: 1.5em solid ${({ theme }) => theme.thirdColor};
@@ -228,6 +222,7 @@ export default function Home() {
   };
   return (
     <>
+
       <Container>
         <Head>
           <title>{`Ed's Portfolio`}</title>
