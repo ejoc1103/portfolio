@@ -5,18 +5,14 @@ import ProTheme from '../themes/pro-theme';
 import FunTheme from '../themes/fun-theme';
 import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
-*{
+html, body {
+  display: grid;
   margin: 0;
   padding: 0;
-}
-body{
-  display: grid;
-  justify-content: center;
-  justify-items: center;
+  height: 100%;
+  box-sizing: border-box;
   background-color: ${({ theme }) => theme.secondaryColor};
   font-family: 'Merriweather', serif;
-  font-weight: 300;
-  overflow-x: hidden;
 }
 a{
   text-decoration: none;

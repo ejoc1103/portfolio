@@ -47,9 +47,7 @@ const PicContainerStyled = styled(motion.div)`
 `;
 const ProfileImageStyled = styled(Image)``;
 const SubheadStyled = styled.div`
-  display: grid;
-  align-items: center;
-  font-size: 3em;
+  font-size: 1.4em;
   background-color: ${({ theme }) => theme.thirdColor};
   @media (max-width: 880px) {
     grid-row: span 2;
@@ -172,17 +170,6 @@ export default function About() {
   };
   return (
     <ContainerStyled key='c1'>
-      <HeaderStyled key='h1'>
-        <motion.h1
-          key='h2'
-          variants={headerVar}
-          initial='hidden'
-          animate='show'
-        >
-          About Me
-        </motion.h1>
-      </HeaderStyled>
-
       <InfoContainerStyled
         key='c5'
         variants={firstInfoVar}
@@ -203,7 +190,7 @@ export default function About() {
           />
         </PicContainerStyled>
         <SubheadStyled key='c5'>
-          <h2>TLDR:</h2>
+          <h2>A Little About Me:</h2>
         </SubheadStyled>
         <InfoStyled key='c6'>
           <p>

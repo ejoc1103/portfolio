@@ -8,9 +8,8 @@ import Toggle from '../components/Toggle';
 const Container = styled.div`
   display: grid;
   height: 100vh;
-  margin: 0;
-  padding: 0;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-rows: 3fr 2fr 3fr;
   grid-template-areas:
     'edu edu proj'
     'about main proj'
@@ -30,6 +29,7 @@ const Container = styled.div`
       'con'
       'edu';
   }
+  
 `;
 
 const MainStyled = styled(motion.div)`
@@ -37,19 +37,20 @@ const MainStyled = styled(motion.div)`
   font-weight: bold;
   grid-area: main;
   font-family: 'Merriweather Sans', sans-serif, ExtraBold 800 Italic;
+  font-size: 2rem;
   justify-content: center;
-  font-size: 3em;
+  align-items: center;
   color: ${({ theme }) => theme.headerText};
   @media (max-width: 1150px) {
-    font-size: 2.5em;
+    font-size: 1.5rem;
   }
   @media (max-width: 800px) {
     background-color: ${({ theme }) => theme.primaryColor};
   }
-`;
+  `;
 
 const ToggleDivStyled = styled.div`
-  margin-bottom: 20px;
+margin-bottom: 20px;
 `;
 
 const HeaderStyled = styled(motion.h1)`
@@ -58,74 +59,77 @@ const HeaderStyled = styled(motion.h1)`
 `;
 
 const Edu = styled(motion.a)`
-  display: grid;
+  display: flex;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
   color: ${({ theme }) => theme.textThree};
   grid-area: edu;
   justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
   font-family: 'Merriweather', serif;
-  font-size: 2.5em;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
   @media (max-width: 1150px) {
-    font-size: 1.5em;
+    font-size: 1em;
   }
-`;
+  `;
 
 const Proj = styled(motion.a)`
-  display: grid;
+  display: flex;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
   grid-area: proj;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   font-family: 'Merriweather', serif;
-  font-size: 2.5em;
+  font-size: 1.5rem;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
   @media (max-width: 1150px) {
-    font-size: 1.5em;
+    font-size: 1rem;
   }
-`;
+  `;
 
 const About = styled(motion.a)`
-  display: grid;
+  display: flex;
   border: 1.5em solid ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textThree};
   grid-area: about;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   font-family: 'Merriweather', serif;
-  font-size: 2.5em;
+  font-size: 1.5rem;
   background-color: ${({ theme }) => theme.secondaryColor};
   color: ${({ theme }) => theme.textThree};
   cursor: pointer;
   @media (max-width: 1150px) {
-    font-size: 1.5em;
+    font-size: 1rem;
   }
   @media (max-width: 800px) {
     border: 1.5em solid ${({ theme }) => theme.primaryColor};
   }
-`;
+  `;
 
 const Con = styled(motion.a)`
-  display: grid;
+  display: flex;
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
-  font-size: 2.5em;
   grid-area: con;
   justify-content: center;
   align-content: center;
+  font-size: 1.5rem;
   font-family: 'Merriweather', serif;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
   @media (max-width: 1150px) {
-    font-size: 1.5em;
+    font-size: 1rem;
   }
   @media (max-width: 800px) {
     border: 1.5em solid ${({ theme }) => theme.thirdColor};
   }
-`;
+  `;
 
 export default function Home() {
   const { id, setTheme } = useContext(ThemeContext);
@@ -222,7 +226,6 @@ export default function Home() {
   };
   return (
     <>
-
       <Container>
         <Head>
           <title>{`Ed's Portfolio`}</title>
