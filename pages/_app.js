@@ -9,7 +9,6 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  box-sizing: border-box;
   background-color: ${({ theme }) => theme.secondaryColor};
   font-family: 'Merriweather', serif;
 }
