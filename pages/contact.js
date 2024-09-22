@@ -15,7 +15,6 @@ const ContainerStyled = styled.div`
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textTwo};
   width: 100vw;
-  padding-bottom: 90px;
   align-items: center;
   justify-items: center;
   align-content: center;
@@ -27,14 +26,9 @@ const HeaderStyled = styled(motion.div)`
   width: 100%;
   justify-content: center;
   align-content: center;
-  padding: 2rem;
   background-color: ${({ theme }) => theme.primaryColor};
   grid-column: span 2;
-  font-size: 2.5em;
   color: ${({ theme }) => theme.textOne};
-  @media (max-width: 550px) {
-    font-size: 2em;
-  }
 `;
 const FormStyled = styled(motion.form)`
   display: grid;

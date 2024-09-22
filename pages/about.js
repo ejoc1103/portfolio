@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Profile from '../public/Profile.png';
+import { createGlobalStyle } from 'styled-components';
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow-y:visible;
+  }
+`
 
 const ContainerStyled = styled(motion.div)`
   display: grid;
@@ -169,101 +175,104 @@ export default function About() {
     },
   };
   return (
-    <ContainerStyled key='c1'>
-      <InfoContainerStyled
-        key='c5'
-        variants={firstInfoVar}
-        initial='hidden'
-        animate='show'
-      >
-        <PicContainerStyled
-          key='c3'
-          variants={imageVar}
+    <>
+      <GlobalStyle />
+      <ContainerStyled key='c1'>
+        <InfoContainerStyled
+          key='c5'
+          variants={firstInfoVar}
           initial='hidden'
           animate='show'
         >
-          <ProfileImageStyled
-            key='c4'
-            src={Profile}
-            alt='Profile'
-            layout='responsive'
-          />
-        </PicContainerStyled>
-        <SubheadStyled key='c5'>
-          <h2>A Little About Me:</h2>
-        </SubheadStyled>
-        <InfoStyled key='c6'>
-          <p>
-            Web Developer with hands-on experience in developing a variety of
-            websites by leveraging advanced skills in Frontend and Backend
-            programming.
-          </p>
-        </InfoStyled>
-      </InfoContainerStyled>
-      <SkillsContainerStyled>
-        <SubheadStyled>
-          <h2>Skills</h2>
-        </SubheadStyled>
-        <InfoStyled>
-          <p>
-            Java | PostgreSQL | JSON | Spring Boot | Restful APIs | JavaScript | HTML & CSS | Vue.js | Unit Testing (JUnit) | Git |
-            IntelliJ & VSCode | SQL | E/R diagrams | Agile | Responsive Web Design | React.js | NextJs | GraphQl | Python |
-            Bootstrap | MongoDB | JDBC | Integration Testing
-          </p>
-        </InfoStyled>
-      </SkillsContainerStyled>
-      <FullStoryStyled
-        key='c7'
-        variants={fullStoryVar}
-        initial='hidden'
-        animate='show'
-      >
-        <SubheadStyled key='c8'>
-          <h2>Full Story:</h2>
-          <ButtonStyled
-            key='c9'
-            onClick={() => setToggleStory(prevState => !prevState)}
+          <PicContainerStyled
+            key='c3'
+            variants={imageVar}
+            initial='hidden'
+            animate='show'
           >
-            {toggleStory ? (
-              <XStyled>X</XStyled>
-            ) : (
-              <>
-                <DivStyled></DivStyled>
-                <DivStyled></DivStyled>
-                <DivStyled></DivStyled>
-              </>
-            )}
-          </ButtonStyled>
-        </SubheadStyled>
-
-        <InfoStyledTwo
-          key='c10'
-          $heightcheck={toggleStory}
-          variants={fullInfoVar}
-          animate={toggleStory ? 'show' : 'hidden'}
+            <ProfileImageStyled
+              key='c4'
+              src={Profile}
+              alt='Profile'
+              layout='responsive'
+            />
+          </PicContainerStyled>
+          <SubheadStyled key='c5'>
+            <h2>A Little About Me:</h2>
+          </SubheadStyled>
+          <InfoStyled key='c6'>
+            <p>
+              Web Developer with hands-on experience in developing a variety of
+              websites by leveraging advanced skills in Frontend and Backend
+              programming.
+            </p>
+          </InfoStyled>
+        </InfoContainerStyled>
+        <SkillsContainerStyled>
+          <SubheadStyled>
+            <h2>Skills</h2>
+          </SubheadStyled>
+          <InfoStyled>
+            <p>
+              Java | PostgreSQL | JSON | Spring Boot | Restful APIs | JavaScript | HTML & CSS | Vue.js | Unit Testing (JUnit) | Git |
+              IntelliJ & VSCode | SQL | E/R diagrams | Agile | Responsive Web Design | React.js | NextJs | GraphQl | Python |
+              Bootstrap | MongoDB | JDBC | Integration Testing
+            </p>
+          </InfoStyled>
+        </SkillsContainerStyled>
+        <FullStoryStyled
+          key='c7'
+          variants={fullStoryVar}
+          initial='hidden'
+          animate='show'
         >
-          <ParagraphsStyled $heightcheck={toggleStory}>
-            {`I'm Ed O’Connor, I'm and endlessly curious problem solver! My experience at all levels of retail from part time sales associate to Lead of operations, has given me a strong foundation in problem-solving, leadership, and achieving ambitious goals.`}
-          </ParagraphsStyled>
+          <SubheadStyled key='c8'>
+            <h2>Full Story:</h2>
+            <ButtonStyled
+              key='c9'
+              onClick={() => setToggleStory(prevState => !prevState)}
+            >
+              {toggleStory ? (
+                <XStyled>X</XStyled>
+              ) : (
+                <>
+                  <DivStyled></DivStyled>
+                  <DivStyled></DivStyled>
+                  <DivStyled></DivStyled>
+                </>
+              )}
+            </ButtonStyled>
+          </SubheadStyled>
 
-          <ParagraphsStyled $heightcheck={toggleStory}>
-            {`Driven by that love of problem solving and a desire to contribute to impactful projects, I’m transitioning into software engineering. Currently, I’m focused on mastering both front-end and back-end development, utilizing technologies like Java, Spring Boot, Vue.js, PostgreSQL`}
-          </ParagraphsStyled>
+          <InfoStyledTwo
+            key='c10'
+            $heightcheck={toggleStory}
+            variants={fullInfoVar}
+            animate={toggleStory ? 'show' : 'hidden'}
+          >
+            <ParagraphsStyled $heightcheck={toggleStory}>
+              {`I'm Ed O’Connor, I'm and endlessly curious problem solver! My experience at all levels of retail from part time sales associate to Lead of operations, has given me a strong foundation in problem-solving, leadership, and achieving ambitious goals.`}
+            </ParagraphsStyled>
 
-          <ParagraphsStyled $heightcheck={toggleStory}>
-            {
-              `I’m attending Tech Elevator, a top-tier software development bootcamp, to jumpstart my career in software engineering. This immersive experience is equipping me with the practical skills and hands-on training needed to make an immediate impact in the tech industry.`
-            }
-          </ParagraphsStyled>
+            <ParagraphsStyled $heightcheck={toggleStory}>
+              {`Driven by that love of problem solving and a desire to contribute to impactful projects, I’m transitioning into software engineering. Currently, I’m focused on mastering both front-end and back-end development, utilizing technologies like Java, Spring Boot, Vue.js, PostgreSQL`}
+            </ParagraphsStyled>
 
-          <ParagraphsStyled $heightcheck={toggleStory}>
-            {
-              `I'm so excited to bring my well crafted communication and team building skills into a new industry. I can't wait to bring those  skills along with my ever expanding technical skills to a software developer role. Feel free to connect with me through my contact page below if you'd like to discuss opportunities or learn more about how my skills and experience can contribute to your team.`
-            }
-          </ParagraphsStyled>
-        </InfoStyledTwo>
-      </FullStoryStyled>
-      <Navbar />
-    </ContainerStyled>
+            <ParagraphsStyled $heightcheck={toggleStory}>
+              {
+                `I’m attending Tech Elevator, a top-tier software development bootcamp, to jumpstart my career in software engineering. This immersive experience is equipping me with the practical skills and hands-on training needed to make an immediate impact in the tech industry.`
+              }
+            </ParagraphsStyled>
+
+            <ParagraphsStyled $heightcheck={toggleStory}>
+              {
+                `I'm so excited to bring my well crafted communication and team building skills into a new industry. I can't wait to bring those  talents along with my ever expanding technical skills to a software developer role. Feel free to connect with me through my contact page below if you'd like to discuss opportunities or learn more about how my skills and experience can contribute to your team.`
+              }
+            </ParagraphsStyled>
+          </InfoStyledTwo>
+        </FullStoryStyled>
+        <Navbar />
+      </ContainerStyled>
+    </>
   );
 }

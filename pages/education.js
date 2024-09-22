@@ -36,10 +36,8 @@ const HeaderStyled = styled.div`
   justify-items: center;
   align-items: center;
   width: 100%;
-  padding: 2rem;
   background-color: ${({ theme }) => theme.primaryColor};
   grid-column: span 2;
-  font-size: 2.5em;
   @media (max-width: 550px) {
     font-size: 2em;
   }

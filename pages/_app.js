@@ -6,7 +6,6 @@ import FunTheme from '../themes/fun-theme';
 import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 html, body {
-  display: grid;
   margin: 0;
   padding: 0;
   height: 100%;

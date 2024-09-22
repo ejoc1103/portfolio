@@ -3,60 +3,103 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Image from 'next/image';
 import Toggle from '../components/Toggle';
+import Profile from '../public/MainProfile.jpeg';
+import LinkedIn from '../public/LinkedIn.png';
+import Github from '../public/github.png';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  #welcome-block {
+    align-content: start;
+    border: 1.5em solid ${({ theme }) => theme.thirdColor};
+    text-align: center;
+  }
+`
 
 const Container = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-columns: 2fr 3fr 2fr;
-  grid-template-rows: 3fr 2fr 3fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
   grid-template-areas:
-    'edu edu proj'
-    'about main proj'
-    'about con con';
-  @media (max-width: 1050px) {
+    'main edu edu proj'
+    'main about tog proj'
+    'main about con con';
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       'edu proj'
       'main main'
       'about con';
+      'hob hob';
   }
-  @media (max-width: 800px) {
-    position: relative;
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
     grid-template-areas:
       'main'
       'proj'
       'about'
       'con'
       'edu';
+      'hob';
   }
   
 `;
 
 const MainStyled = styled(motion.div)`
   display: grid;
-  font-weight: bold;
+  grid-template-columns: 1fr 2fr;
   grid-area: main;
   font-family: 'Merriweather Sans', sans-serif, ExtraBold 800 Italic;
-  font-size: 2rem;
-  justify-content: center;
-  align-items: center;
   color: ${({ theme }) => theme.headerText};
-  @media (max-width: 1150px) {
-    font-size: 1.5rem;
-  }
   @media (max-width: 800px) {
     background-color: ${({ theme }) => theme.primaryColor};
   }
   `;
 
-const ToggleDivStyled = styled.div`
-margin-bottom: 20px;
+const HeaderStyled = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  color: white;
+  border: 5px solid ${({ theme }) => theme.primaryColor};
 `;
 
-const HeaderStyled = styled(motion.h1)`
-  text-align: center;
-  color: white;
+const HeaderColumnStyled = styled.div`
+  display: grid;
+  justify-items: center;
+  align-content: start;
+`
+const ImageContainer = styled.div`
+  display: grid;
+  align-content: space-between;
 `;
+
+const ImageStyled = styled(Image)`
+  height: 2rem;
+  width: 2rem;
+`;
+
+const MainImageStyled = styled(Image)`
+
+`;
+
+const ContactLinks = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.primaryColor};
+`
 
 const Edu = styled(motion.a)`
   display: flex;
@@ -65,14 +108,10 @@ const Edu = styled(motion.a)`
   grid-area: edu;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
   font-family: 'Merriweather', serif;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
-  @media (max-width: 1150px) {
-    font-size: 1em;
-  }
   `;
 
 const Proj = styled(motion.a)`
@@ -83,13 +122,9 @@ const Proj = styled(motion.a)`
   justify-content: center;
   align-items: center;
   font-family: 'Merriweather', serif;
-  font-size: 1.5rem;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
-  @media (max-width: 1150px) {
-    font-size: 1rem;
-  }
   `;
 
 const About = styled(motion.a)`
@@ -100,13 +135,11 @@ const About = styled(motion.a)`
   justify-content: center;
   align-items: center;
   font-family: 'Merriweather', serif;
-  font-size: 1.5rem;
+
   background-color: ${({ theme }) => theme.secondaryColor};
   color: ${({ theme }) => theme.textThree};
   cursor: pointer;
-  @media (max-width: 1150px) {
-    font-size: 1rem;
-  }
+
   @media (max-width: 800px) {
     border: 1.5em solid ${({ theme }) => theme.primaryColor};
   }
@@ -117,19 +150,27 @@ const Con = styled(motion.a)`
   border: 1.5em solid ${({ theme }) => theme.primaryColor};
   grid-area: con;
   justify-content: center;
-  align-content: center;
-  font-size: 1.5rem;
+  align-items: center;
+
   font-family: 'Merriweather', serif;
   background-color: ${({ theme }) => theme.secondaryColor};
   cursor: pointer;
   color: ${({ theme }) => theme.textThree};
-  @media (max-width: 1150px) {
-    font-size: 1rem;
-  }
+
   @media (max-width: 800px) {
     border: 1.5em solid ${({ theme }) => theme.thirdColor};
   }
   `;
+
+const InfoStyled = styled.div`
+  display: grid;
+  justify-items: center;
+  background-color: ${({ theme }) => theme.primaryColor};
+  color: white;
+  padding: 10px;
+  font-size: .85em;
+`;
+
 
 export default function Home() {
   const { id, setTheme } = useContext(ThemeContext);
@@ -224,8 +265,25 @@ export default function Home() {
       scale: 1.3,
     },
   };
+
+  const togVar = {
+    hidden: {
+      x: -2000,
+    },
+    show: {
+      x: 0,
+      transition: {
+        duration: 2,
+        delay: 2,
+      },
+    },
+    hover: {
+      scale: 1.3,
+    },
+  };
   return (
     <>
+      <GlobalStyle />
       <Container>
         <Head>
           <title>{`Ed's Portfolio`}</title>
@@ -243,10 +301,60 @@ export default function Home() {
             variants={mainWordsVar}
             initial='start'
             animate='show'
-          >{`Ed O'Connor`}</HeaderStyled>
-          <ToggleDivStyled>
-            <Toggle isActive={id === 'fun'} onToggle={setTheme} />
-          </ToggleDivStyled>
+          >
+            <HeaderColumnStyled>
+
+              <h2>
+                {`Ed O'Connor`}
+              </h2>
+
+
+              <MainImageStyled
+
+                src={Profile}
+                alt='Profile'
+
+              />
+
+            </HeaderColumnStyled>
+            <ContactLinks>
+              <ImageContainer>
+                <a
+                  href="https://github.com/ejoc1103"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <ImageStyled src={Github} alt="Github" />
+                </a>
+              </ImageContainer>
+              <ImageContainer>
+                <a
+                  href="https://www.linkedin.com/in/edjoconnor"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <ImageStyled src={LinkedIn} alt="LinkedIn" />
+                </a>
+              </ImageContainer>
+            </ContactLinks>
+
+          </HeaderStyled>
+          <InfoStyled id="welcome-block">
+            <h2>Full Stack Developer | Problem Solver | Team Builder</h2>
+            <h2>Father | Husband | Beach Bum</h2>
+            <h3>
+              Web Developer with hands-on experience in developing a variety of
+              websites by leveraging advanced skills in Frontend and Backend
+              programming.
+            </h3>
+            <h1>Skills</h1>
+            <h3>
+              Java | PostgreSQL | JSON | Spring Boot | Restful APIs | JavaScript | HTML & CSS | Vue.js | Unit Testing (JUnit) | Git |
+              IntelliJ & VSCode | SQL | E/R diagrams | Agile | Responsive Web Design | React.js | NextJs | GraphQl | Python |
+              Bootstrap | MongoDB | JDBC | Integration Testing
+            </h3>
+          </InfoStyled>
+
         </MainStyled>
 
         <Link href='/education' passHref>
@@ -291,6 +399,15 @@ export default function Home() {
             <h2>{`Contact`}</h2>
           </Con>
         </Link>
+
+        <Toggle key='tog'
+          variants={togVar}
+          whileHover='hover'
+          initial='hidden'
+          animate='show'
+          isActive={id === 'fun'} onToggle={setTheme} />
+
+
       </Container>
     </>
   );

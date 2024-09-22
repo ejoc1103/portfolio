@@ -15,7 +15,6 @@ const ContainerStyled = styled.div`
   gap: 15px;
   background: ${({ theme }) => theme.thirdColor};
   color: ${({ theme }) => theme.textOne};
-  padding-bottom: 90px;
   align-items: center;
   justify-items: center;
   align-content: center;
@@ -27,14 +26,9 @@ const HeaderStyled = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  padding: 2rem;
   background-color: ${({ theme }) => theme.primaryColor};
   width: 100%;
   grid-column: span 2;
-  font-size: 2.5em;
-  @media (max-width: 550px) {
-    font-size: 2em;
-  }
 `;
 const MainProjectsStyled = styled(motion.div)`
   display: grid;

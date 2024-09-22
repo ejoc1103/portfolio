@@ -13,7 +13,7 @@ const Container = styled.div`
   bottom: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.primaryColor};
-  padding: 10px;
+  padding: 5px;
   @media (max-width: 700px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -23,7 +23,6 @@ const NavSection = styled.div`
   display: grid;
   background-color: ${({ theme }) => theme.thirdColor};
   border: 5px solid ${({ theme }) => theme.primaryColor};
-  font-size: 1.5em;
   justify-content: center;
   align-content: center;
 `;
@@ -34,7 +33,6 @@ const NavH1 = styled.h1`
 `;
 const ToggleSection = styled.div`
   display: grid;
-  font-size: 1.5em;
   justify-content: center;
   align-content: center;
 `;
