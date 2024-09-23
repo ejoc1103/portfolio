@@ -53,7 +53,9 @@ const PicContainerStyled = styled(motion.div)`
 `;
 const ProfileImageStyled = styled(Image)``;
 const SubheadStyled = styled.div`
-  font-size: 1.4em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
   background-color: ${({ theme }) => theme.thirdColor};
   @media (max-width: 880px) {
     grid-row: span 2;
@@ -198,14 +200,17 @@ export default function About() {
             />
           </PicContainerStyled>
           <SubheadStyled key='c5'>
-            <h2>A Little About Me:</h2>
+            <h1>A Little About Me:</h1>
           </SubheadStyled>
           <InfoStyled key='c6'>
-            <p>
+            <h4>Full Stack Developer | Problem Solver | Team Builder</h4>
+            <h4>Father | Husband | Beach Bum</h4>
+            <h5>
               Web Developer with hands-on experience in developing a variety of
               websites by leveraging advanced skills in Frontend and Backend
               programming.
-            </p>
+            </h5>
+
           </InfoStyled>
         </InfoContainerStyled>
         <SkillsContainerStyled>
